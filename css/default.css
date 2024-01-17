@@ -11379,6 +11379,10 @@ figure.highlight.foldable div.level-left {
 .level.is-multiline {
   flex-wrap: wrap;
 }
+#toc {
+  max-height: calc(100vh - 22px);
+  overflow-y: scroll;
+}
 @media screen and (max-width: 768px) {
   .widget.card#toc {
     display: none;
