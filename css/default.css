@@ -10847,6 +10847,10 @@ article.article .content blockquote.pullquote {
 article.article .content blockquote footer strong + cite {
   margin-left: 0.5em;
 }
+article.article .content a img {
+  margin: auto;
+  display: block;
+}
 article.article .content .message.message-immersive {
   border-radius: 0;
   margin: 0 -1.5rem 1.5rem -1.5rem;
@@ -11680,4 +11684,8 @@ figure.highlight.foldable div.level-left {
   .section {
     padding: 1.5rem 1rem;
   }
+}
+.footer {
+  background-color: rgba(255,255,255,0.7);
+  padding: 1.5rem 1.5rem 1.5rem;
 }
