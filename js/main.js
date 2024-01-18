@@ -123,7 +123,7 @@
     const $toc = $('#toc');
     if ($toc.length > 0) {
         const $mask = $('<div>');
-        $toc.addClass('column-right is-sticky');
+        $toc.addClass('column-left is-sticky');
         $mask.attr('id', 'toc-mask');
 
         $('body').append($mask);
