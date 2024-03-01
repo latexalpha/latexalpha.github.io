@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>PowerShell 使用经验积累 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要介绍了 PowerShell 的使用经验，包括常用命令、终端美化等。"><meta property="og:type" content="blog"><meta property="og:title" content="PowerShell 使用经验积累"><meta property="og:url" content="https://latexalpha.github.io/dbdc2dc3d0bb/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要介绍了 PowerShell 的使用经验，包括常用命令、终端美化等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831190643.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191807.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191657.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831192627.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831193015.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831200111.png"><meta property="og:image" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230908142249.png"><meta property="article:published_time" content="2024-03-01T06:37:54.000Z"><meta property="article:modified_time" content="2024-03-01T08:55:50.080Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="PowerShell"><meta property="article:tag" content="Shell"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831190643.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/dbdc2dc3d0bb/"},"headline":"PowerShell 使用经验积累","image":["https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831190643.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191807.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191657.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831192627.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831193015.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831200111.png","https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230908142249.png"],"datePublished":"2024-03-01T06:37:54.000Z","dateModified":"2024-03-01T08:55:50.080Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要介绍了 PowerShell 的使用经验，包括常用命令、终端美化等。"}</script><link rel="canonical" href="https://latexalpha.github.io/dbdc2dc3d0bb/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">博客主页</a><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/categories">文章分类</a><a class="navbar-item" href="/tags">文章标签</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/project-codes">项目代码</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-03-01T06:37:54.000Z" title="2024/3/1 14:37:54">2024-03-01</time>发表</span><span class="level-item"><time dateTime="2024-03-01T08:55:50.080Z" title="2024/3/1 16:55:50">2024-03-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></span><span class="level-item">7 分钟读完 (大约1050个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">PowerShell 使用经验积累</h1><div class="content"><p>本文主要介绍了 PowerShell 的使用经验，包括常用命令、终端美化等。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/">PowerShell Documentation - PowerShell | Microsoft Learn</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/00-introduction?view=powershell-7.3">PowerShell 101 - PowerShell | Microsoft Learn</a></p>
+<h2 id="PowerShell-常用命令"><a href="#PowerShell-常用命令" class="headerlink" title="PowerShell 常用命令"></a>PowerShell 常用命令</h2><p>使用 <code>Get-Alias</code> 命令就可以查看所有的命令别名。</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_aliases?view=powershell-7.3">about Aliases - PowerShell | Microsoft Learn</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/?view=powershell-7.3">Microsoft.PowerShell.Core Module - PowerShell | Microsoft Learn</a></p>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Command</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clc</td>
+<td>Clear-Content</td>
+<td></td>
+</tr>
+<tr>
+<td>clhy</td>
+<td>Clear-History</td>
+<td>从命令历史记录文件中删除命令历史</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>Clear-Host</td>
+<td>清除当前 Host 的命令历史展示</td>
+</tr>
+<tr>
+<td>copy&#x2F;cp&#x2F;cpi</td>
+<td>Copy-Item</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>gal</td>
+<td>Get-Alias</td>
+<td>查看命令别名</td>
+</tr>
+<tr>
+<td>gci&#x2F;ls&#x2F;dir</td>
+<td>Get-ChildItem</td>
+<td>获取当前文件夹下文件及子文件夹</td>
+</tr>
+<tr>
+<td>gcm</td>
+<td>Get-Command</td>
+<td>查询命令信息</td>
+</tr>
+<tr>
+<td>gl&#x2F;pwd</td>
+<td>Get-Location</td>
+<td>获取当前文件夹</td>
+</tr>
+<tr>
+<td>ghy&#x2F;h&#x2F;history</td>
+<td>Get-History</td>
+<td>历史命令</td>
+</tr>
+<tr>
+<td>man&#x2F;help</td>
+<td>Get-Help</td>
+<td>帮助</td>
+</tr>
+<tr>
+<td>mi&#x2F;mv&#x2F;move</td>
+<td>Move-Item</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>ni&#x2F;md&#x2F;mkdir</td>
+<td>New-Item</td>
+<td>创建文件夹</td>
+</tr>
+<tr>
+<td>rm&#x2F;rmdir</td>
+<td>Remove-Item</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>ren&#x2F;rni</td>
+<td>Rename-Item</td>
+<td>重命名文件</td>
+</tr>
+<tr>
+<td>sl&#x2F;cd&#x2F;chdir</td>
+<td>Set-Location</td>
+<td>设置当前工作目录</td>
+</tr>
+<tr>
+<td>where&#x2F;?</td>
+<td>Where-Object</td>
+<td>根据对象的属性值从集合中选择对象</td>
+</tr>
+</tbody></table>
+<h2 id="PowerShell-和-Windows-PowerShell-的区别"><a href="#PowerShell-和-Windows-PowerShell-的区别" class="headerlink" title="PowerShell 和 Windows PowerShell 的区别"></a>PowerShell 和 Windows PowerShell 的区别</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3">Install PowerShell on Windows, Linux, and macOS - PowerShell | Microsoft Learn</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell?view=powershell-7.3">Differences between Windows PowerShell 5.1 and PowerShell 7.x - PowerShell | Microsoft Learn</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/scripting/whats-new/unix-support?view=powershell-7.3">PowerShell differences on non-Windows platforms - PowerShell | Microsoft Learn</a></p>
+<p>由于 PowerShell 的演进，它从 Windows 专属的工具变成了跨平台的工具，适用于 Windows 系统的 PowerShell 称为 Windows PowerShell。Linux 和 macOS 系统上的 PowerShell 基于 .NET core 开发，而 .NET core 是完全版的 .NET Framework 的子集。由于使用框架的不同，导致有一些在 Windows 系统上可以运行脚本无法在其他的系统上运行。</p>
+<p>Windows 用户层面需要注意到的区别有：</p>
+<ul>
+<li>PowerShell 的可执行文件为 pwsh. Exe, Windows PowerShell 的可执行文件是 powershell. Exe.</li>
+<li>安装文件文件夹的区别</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\PowerShell\7\pwsh.exe # PowerShell</span><br><span class="line"></span><br><span class="line">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe # Windows PowerShell</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831190643.png" alt="PowerShell 安装文件夹"></p>
+<ul>
+<li>配置文件文件夹的区别</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">C:\Users\heihi\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 # PowerShell</span><br><span class="line"></span><br><span class="line">C:\Users\heihi\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 # Windows PowerShell</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191807.png" alt="PowerShell Profile 位置"><br><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831191657.png" alt="Windows PowerShell Profile 位置"></p>
+<h2 id="PowerShell-Gallery"><a href="#PowerShell-Gallery" class="headerlink" title="PowerShell Gallery"></a>PowerShell Gallery</h2><p><a target="_blank" rel="noopener" href="https://www.powershellgallery.com/">PowerShell Gallery | Home</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/gallery/overview?view=powershellget-2.x">PowerShellGet and the PowerShell Gallery - PowerShell | Microsoft Learn</a></p>
+<h2 id="PowerShell-终端美化"><a href="#PowerShell-终端美化" class="headerlink" title="PowerShell 终端美化"></a>PowerShell 终端美化</h2><p><a target="_blank" rel="noopener" href="https://ohmyposh.dev/">Home | Oh My Posh</a></p>
+<p><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/installation/windows">Windows | Oh My Posh</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup#install-a-nerd-font">Windows Terminal Custom Prompt Setup</a></p>
+<ul>
+<li>下载安装</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install JanDeDobbeleer.OhMyPosh -s winget # 安装 Oh My Posh</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831192627.png" alt="Windows Terminal Oh My Posh 注意事项"></p>
+<ul>
+<li>配置：需要安装 Nerd Fonds 系列字体</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831193015.png" alt="Windows Terminal Oh My Posh 配置"></p>
+<ul>
+<li>Oh My Posh 安装好之后会添加环境变量 <code>POSH_THEMES_PATH</code>，主题就在此文件夹下，可以在 PowerShell 的配置文件中添加如下内容以启用某一主题：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvim $profile # 使用 Nvim 编辑 Profile 文件</span><br><span class="line">oh-my-posh init pwsh --config &quot;$env:POSH_THEMES_PATH\jandedobbeleer.omp.json</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>$home</code> 目录显示 Python 虚拟环境，在主题文件里增加如下内容：</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;properties&quot;: &#123;</span><br><span class="line">  &quot;fetch_virtual_env&quot;: true,</span><br><span class="line">  &quot;display_mode&quot;: &quot;environment&quot;,</span><br><span class="line">  &quot;home_enabled&quot;: true</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230831200111.png" alt="结果显示"></p>
+<p><a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/segments/python">Python | Oh My Posh</a></p>
+<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><h3 id="更改-Power-Shell-的执行策略"><a href="#更改-Power-Shell-的执行策略" class="headerlink" title="更改 Power Shell 的执行策略"></a>更改 Power Shell 的执行策略</h3><p>在计算机上启动 Windows PowerShell 时，执行策略很可能是 Restricted（默认设置）。</p>
+<p><a target="_blank" rel="noopener" href="https://oldtang.com/2287.html">PowerShell 提示”无法加载文件，因为在此系统上禁止运行脚本”的解决方法</a></p>
+<h3 id="设定-PowerShell-启动位置"><a href="#设定-PowerShell-启动位置" class="headerlink" title="设定 PowerShell 启动位置"></a>设定 PowerShell 启动位置</h3><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61231739/set-the-position-of-powershell-window">Set the position of Powershell window</a></p>
+<h3 id="自定义-Powershell-Scripts"><a href="#自定义-Powershell-Scripts" class="headerlink" title="自定义 Powershell Scripts"></a>自定义 Powershell Scripts</h3><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-write-and-run-scripts-in-the-windows-powershell-ise?view=powershell-7.2">How to Write and Run Scripts in the Windows PowerShell ISE - PowerShell</a></p>
+<p><img src="https://raw.githubusercontent.com/heihiha/image_bed/main/images23/20230908142249.png" alt="Get-Item"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>PowerShell 使用经验积累</p><p><a href="https://latexalpha.github.io/dbdc2dc3d0bb/">https://latexalpha.github.io/dbdc2dc3d0bb/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-03-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-03-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/PowerShell/">PowerShell</a><a class="link-muted mr-2" rel="tag" href="/tags/Shell/">Shell</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/06cce8ce2e2d/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Obsidian 使用经验积累</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/d4971c620744/"><span class="level-item">PyTorch 使用经验积累</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span class="level-start"><span class="level-item">经验积累-个人博客</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span class="level-start"><span class="level-item">经验积累-软件使用</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#PowerShell-常用命令"><span class="level-left"><span class="level-item">PowerShell 常用命令</span></span></a></li><li><a class="level is-mobile" href="#PowerShell-和-Windows-PowerShell-的区别"><span class="level-left"><span class="level-item">PowerShell 和 Windows PowerShell 的区别</span></span></a></li><li><a class="level is-mobile" href="#PowerShell-Gallery"><span class="level-left"><span class="level-item">PowerShell Gallery</span></span></a></li><li><a class="level is-mobile" href="#PowerShell-终端美化"><span class="level-left"><span class="level-item">PowerShell 终端美化</span></span></a></li><li><a class="level is-mobile" href="#使用经验"><span class="level-left"><span class="level-item">使用经验</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#更改-Power-Shell-的执行策略"><span class="level-left"><span class="level-item">更改 Power Shell 的执行策略</span></span></a></li><li><a class="level is-mobile" href="#设定-PowerShell-启动位置"><span class="level-left"><span class="level-item">设定 PowerShell 启动位置</span></span></a></li><li><a class="level is-mobile" href="#自定义-Powershell-Scripts"><span class="level-left"><span class="level-item">自定义 Powershell Scripts</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

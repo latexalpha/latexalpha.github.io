@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>VS Code 使用经验积累 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要记录了 VS Code 的使用经验，包括 VS Code 的基本使用、VS Code 的插件使用、VS Code 的配置等。"><meta property="og:type" content="blog"><meta property="og:title" content="VS Code 使用经验积累"><meta property="og:url" content="https://latexalpha.github.io/75d391b93f57/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要记录了 VS Code 的使用经验，包括 VS Code 的基本使用、VS Code 的插件使用、VS Code 的配置等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/20230913202823.png"><meta property="article:published_time" content="2024-03-01T06:37:54.000Z"><meta property="article:modified_time" content="2024-03-01T08:55:38.231Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="VSCode"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/20230913202823.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/75d391b93f57/"},"headline":"VS Code 使用经验积累","image":["https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/20230913202823.png"],"datePublished":"2024-03-01T06:37:54.000Z","dateModified":"2024-03-01T08:55:38.231Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要记录了 VS Code 的使用经验，包括 VS Code 的基本使用、VS Code 的插件使用、VS Code 的配置等。"}</script><link rel="canonical" href="https://latexalpha.github.io/75d391b93f57/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">博客主页</a><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/categories">文章分类</a><a class="navbar-item" href="/tags">文章标签</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/project-codes">项目代码</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-03-01T06:37:54.000Z" title="2024/3/1 14:37:54">2024-03-01</time>发表</span><span class="level-item"><time dateTime="2024-03-01T08:55:38.231Z" title="2024/3/1 16:55:38">2024-03-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></span><span class="level-item">8 分钟读完 (大约1236个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">VS Code 使用经验积累</h1><div class="content"><p>本文主要记录了 VS Code 的使用经验，包括 VS Code 的基本使用、VS Code 的插件使用、VS Code 的配置等。</p>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs">Documentation for Visual Studio Code</a></p>
+<h2 id="VS-Code-Terminal-使用"><a href="#VS-Code-Terminal-使用" class="headerlink" title="VS Code Terminal 使用"></a>VS Code Terminal 使用</h2><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/terminal/basics">Integrated Terminal in Visual Studio Code</a></p>
+<ul>
+<li><p>开启&#x2F;关闭终端快捷键 <code>(Ctrl + `)</code></p>
+</li>
+<li><p>切换默认终端为 <code>PowerShell</code>，并设置 <code>Nerd</code> 字体</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;terminal.integrated.defaultProfile.windows&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PowerShell&quot;</span><span class="punctuation">,</span> <span class="comment">// 设置默认终端为 PowerShell</span></span><br><span class="line"><span class="attr">&quot;terminal.integrated.fontFamily&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CaskaydiaCove Nerd Font Mono&quot;</span><span class="punctuation">,</span> <span class="comment">// 设置终端字体</span></span><br><span class="line"><span class="attr">&quot;terminal.integrated.fontSize&quot;</span><span class="punctuation">:</span> <span class="number">14</span><span class="punctuation">,</span> <span class="comment">// 设置终端字体大小</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="VS-Code-备份设置"><a href="#VS-Code-备份设置" class="headerlink" title="VS Code 备份设置"></a>VS Code 备份设置</h2><p>使用 Github 备份 VS Code 扩展设置</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/settings-sync">Settings Sync in Visual Studio Code</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cisum/p/9376023.html">vscode - 使用 Settings 进行同步扩展以及配置信息等</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/84303">Enable extension according to file type · Issue #84303 · microsoft&#x2F;vscode (github.com)</a></p>
+<h2 id="VS-Code-配置-Vim"><a href="#VS-Code-配置-Vim" class="headerlink" title="VS Code 配置 Vim"></a>VS Code 配置 Vim</h2><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">Vim - Visual Studio Marketplace</a></p>
+<ul>
+<li><p>安装 ## VSCodeVim 插件</p>
+</li>
+<li><p><code>Esc</code> 键位映射为 <code>jk</code> ：在 <code>settings.json</code> 中添加如下配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;vim.insertModeKeyBindings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;before&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;j&quot;</span><span class="punctuation">,</span><span class="string">&quot;k&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;after&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;Esc&gt;&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="VS-Code-配置-Neovim"><a href="#VS-Code-配置-Neovim" class="headerlink" title="VS Code 配置 Neovim"></a>VS Code 配置 Neovim</h2><p><a target="_blank" rel="noopener" href="https://github.com/vscode-neovim/vscode-neovim">GitHub - vscode-neovim&#x2F;vscode-neovim: Vim-mode for VS Code using embedded Neovim</a></p>
+<ul>
+<li>安装 vscode-neovim 插件</li>
+<li>安装 Neovim，在 vscode-neovim 插件中设置 Neovim 的完整路径</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C<span class="punctuation">:</span>\Program Files\Neovim\bin\nvim.exe</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置 Neovim config 文件，在 <code>init.lua</code> 文件中添加如下内容</li>
+</ul>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> vim.g.vscode <span class="keyword">then</span></span><br><span class="line">    <span class="comment">-- VSCode extension</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">-- ordinary Neovim</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>VS Code 中设置 <code>Esc</code> 键位映射为 <code>jk</code>，Open Keyboard Shortcuts JSON, 添加如下内容：</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vscode-neovim.compositeEscape1&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;j&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;when&quot;</span><span class="punctuation">:</span> <span class="string">&quot;neovim.mode == insert &amp;&amp; editorTextFocus&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="string">&quot;j&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"> <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vscode-neovim.compositeEscape2&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;k&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;when&quot;</span><span class="punctuation">:</span> <span class="string">&quot;neovim.mode == insert &amp;&amp; editorTextFocus&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="string">&quot;k&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="VS-Code-配置-Markdown-编辑器"><a href="#VS-Code-配置-Markdown-编辑器" class="headerlink" title="VS Code 配置 Markdown 编辑器"></a>VS Code 配置 Markdown 编辑器</h2><p>安装插件 Markdown Preview Enhanced 使用即可。</p>
+<p><a target="_blank" rel="noopener" href="https://www.shuzhiduo.com/A/x9J2QZlWz6/">关于插件 Markdown Preview Enhanced 的使用技巧</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56699805">在 VSCode 下用 Markdown Preview Enhanced 愉快地写文档</a></p>
+<h2 id="VS-Code-配置-Python-开发环境"><a href="#VS-Code-配置-Python-开发环境" class="headerlink" title="VS Code 配置 Python 开发环境"></a>VS Code 配置 Python 开发环境</h2><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/python-tutorial">Get Started Tutorial for Python in Visual Studio Code</a></p>
+<h3 id="将-Conda-路径加入系统环境变量"><a href="#将-Conda-路径加入系统环境变量" class="headerlink" title="将 Conda 路径加入系统环境变量"></a>将 Conda 路径加入系统环境变量</h3><ul>
+<li><p>配置环境变量</p>
+<ul>
+<li>Windows + S</li>
+<li>高级系统设置</li>
+<li>环境变量</li>
+<li>系统变量</li>
+<li>PATH 下添加 Miniconda&#x2F;Anaconda 安装路径</li>
+<li>重启计算机，使系统变量生效</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a12355556/article/details/114398391">vscode 调试 python 时提示无法将”conda”项识别为 cmdlet、函数、脚本文件或可运行程序的名称的解决方法_是魏果果呀~-CSDN 博客</a></p>
+</li>
+</ul>
+<h3 id="安装-Python-插件"><a href="#安装-Python-插件" class="headerlink" title="安装 Python 插件"></a>安装 Python 插件</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python 插件</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-Code-Runner-运行时自动保存文件"><a href="#使用-Code-Runner-运行时自动保存文件" class="headerlink" title="使用 Code Runner 运行时自动保存文件"></a>使用 Code Runner 运行时自动保存文件</h3><p>修改 VS code 的 settings. Json 文件，添加如下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// added by shangyu</span><br><span class="line"><span class="string">&quot;code-runner.executorMap&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;python&quot;</span>: <span class="string">&quot;$pythonPath -u $fullFileName&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="VS-Code-配置-LaTeX-编辑器"><a href="#VS-Code-配置-LaTeX-编辑器" class="headerlink" title="VS Code 配置 LaTeX 编辑器"></a>VS Code 配置 LaTeX 编辑器</h2><h3 id="安装-TeX-Live-发行版"><a href="#安装-TeX-Live-发行版" class="headerlink" title="安装 TeX Live 发行版"></a>安装 TeX Live 发行版</h3><p>安装 TeX live 很简单，直接安装即可。</p>
+<p>安装过程中会自动设置 PATH，安装完了就可以直接使用。</p>
+<p>删除的时候是把文件夹删了就可以了，如果是更换安装路径，直接把文件夹剪切到目标路径，然后更新 PATH 就可以了，不用卸载重新安装。</p>
+<h3 id="插件安装及配置"><a href="#插件安装及配置" class="headerlink" title="插件安装及配置"></a>插件安装及配置</h3><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop">LaTeX Workshop - Visual Studio Marketplace</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cantab.net/users/johncollins/latexmk/">Latexmk (cantab.net)</a></p>
+<p><a target="_blank" rel="noopener" href="https://mg.readthedocs.io/latexmk.html">Using Latexmk — homepage (mg.readthedocs.io)</a></p>
+<ul>
+<li><p>安装 LaTeX Workshop 及一系列插件, 直接安装以下插件：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LaTeX Workshop</span><br><span class="line">LaTeX language support</span><br><span class="line">Unicode Latex</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 <code>settings.json</code> 文件</p>
+<ul>
+<li><p>正向搜索是在目标位置使用快捷键 Ctrl+Alt+J</p>
+</li>
+<li><p>反向搜索是直接双击即可</p>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/20230913202823.png" alt="latexmk"></p>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 设置外部PDF预览器</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.viewer&quot;</span><span class="punctuation">:</span><span class="string">&quot;external&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.ref.viewer&quot;</span><span class="punctuation">:</span><span class="string">&quot;external&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.viewer.command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\heihi\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.viewer.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"> <span class="string">&quot;%PDF%&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// 配置Syntex的正向与反向搜索(Latex-&gt;PDF)</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.synctex.command&quot;</span><span class="punctuation">:</span> <span class="string">&quot;C:\\Users\\heihi\\AppData\\Local\\SumatraPDF\\SumatraPDF.exe&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.external.synctex.args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"> <span class="string">&quot;-forward-search&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;%TEX%&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;%LINE%&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;-reuse-instance&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;-inverse-search&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;\&quot;C:\\Users\\heihi\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\&quot; \&quot;C:\\Users\\heihi\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\out\\cli.js\&quot; -r -g \&quot;%f:%l\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line"> <span class="string">&quot;%PDF%&quot;</span> <span class="comment">// 这里其实就是配置的反向搜索 不用在 Sumatra PDF 里面重新设</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;latex-workshop.view.pdf.internal.synctex.keybinding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;double-click&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="comment">// Latex End</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><p>Json 文件里的路径最好使用转义字符。</p>
+</li>
+<li><p>LaTeX 文件夹目录开始字符需要是字母，路径可以有空格。</p>
+</li>
+<li><p>编译时间太长的情况下，删掉文件夹下的除了 .tex 文件的其他文件。</p>
+</li>
+<li><p>编译时间太长的原因是设置了保存时自动编译，所以会一直不停地编译。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;latex-workshop.latex.autoBuild.run&quot;</span><span class="punctuation">:</span> <span class="string">&quot;never&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反向搜索打开的是 <code>cli.js</code> 文件的问题解决方法:<br>要在 Sumatra PDF 设置里设置正确的路径，且还要在预览前先开启 Sumatra PDF.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/James-Yu/LaTeX-Workshop/issues/2988">Inverse Search in vscode 1.62.3, windows 11, with Sumatra PDF · Issue #2988 · James-Yu&#x2F;LaTeX-Workshop</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/434142338">VScode+Latex+SumatraPDF 反向搜索失败解决办法（Version 1.63）</a></p>
+</li>
+</ul>
+<h2 id="VS-Code-设置-Snippets"><a href="#VS-Code-设置-Snippets" class="headerlink" title="VS Code 设置 Snippets"></a>VS Code 设置 Snippets</h2><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Snippets in Visual Studio Code</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>VS Code 使用经验积累</p><p><a href="https://latexalpha.github.io/75d391b93f57/">https://latexalpha.github.io/75d391b93f57/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-03-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-03-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/VSCode/">VSCode</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/69e7446cdf31/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Ubuntu 使用经验积累</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/46a9b070ea09/"><span class="level-item">梯子的一些常识</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span class="level-start"><span class="level-item">经验积累-个人博客</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF-%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span class="level-start"><span class="level-item">经验积累-软件使用</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#VS-Code-Terminal-使用"><span class="level-left"><span class="level-item">VS Code Terminal 使用</span></span></a></li><li><a class="level is-mobile" href="#VS-Code-备份设置"><span class="level-left"><span class="level-item">VS Code 备份设置</span></span></a></li><li><a class="level is-mobile" href="#VS-Code-配置-Vim"><span class="level-left"><span class="level-item">VS Code 配置 Vim</span></span></a></li><li><a class="level is-mobile" href="#VS-Code-配置-Neovim"><span class="level-left"><span class="level-item">VS Code 配置 Neovim</span></span></a></li><li><a class="level is-mobile" href="#VS-Code-配置-Markdown-编辑器"><span class="level-left"><span class="level-item">VS Code 配置 Markdown 编辑器</span></span></a></li><li><a class="level is-mobile" href="#VS-Code-配置-Python-开发环境"><span class="level-left"><span class="level-item">VS Code 配置 Python 开发环境</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#将-Conda-路径加入系统环境变量"><span class="level-left"><span class="level-item">将 Conda 路径加入系统环境变量</span></span></a></li><li><a class="level is-mobile" href="#安装-Python-插件"><span class="level-left"><span class="level-item">安装 Python 插件</span></span></a></li><li><a class="level is-mobile" href="#使用-Code-Runner-运行时自动保存文件"><span class="level-left"><span class="level-item">使用 Code Runner 运行时自动保存文件</span></span></a></li></ul></li><li><a class="level is-mobile" href="#VS-Code-配置-LaTeX-编辑器"><span class="level-left"><span class="level-item">VS Code 配置 LaTeX 编辑器</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#安装-TeX-Live-发行版"><span class="level-left"><span class="level-item">安装 TeX Live 发行版</span></span></a></li><li><a class="level is-mobile" href="#插件安装及配置"><span class="level-left"><span class="level-item">插件安装及配置</span></span></a></li><li><a class="level is-mobile" href="#注意事项"><span class="level-left"><span class="level-item">注意事项</span></span></a></li></ul></li><li><a class="level is-mobile" href="#VS-Code-设置-Snippets"><span class="level-left"><span class="level-item">VS Code 设置 Snippets</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
