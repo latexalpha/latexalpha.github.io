@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>论文源码 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Code: GitHub - isds-neu&amp;#x2F;EQDiscovery  Paper: Physics-informed learning of governing equations from scarce data - Nature Comunications Deep Learning Framework: Remarks:   Code: dysco.imtlucca.it&amp;amp;#"><meta property="og:type" content="blog"><meta property="og:title" content="论文源码"><meta property="og:url" content="https://latexalpha.github.io/source-code/index.html"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="Code: GitHub - isds-neu&amp;#x2F;EQDiscovery  Paper: Physics-informed learning of governing equations from scarce data - Nature Comunications Deep Learning Framework: Remarks:   Code: dysco.imtlucca.it&amp;amp;#"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://latexalpha.github.io/img/og_image.png"><meta property="article:published_time" content="2024-01-20T10:21:27.000Z"><meta property="article:modified_time" content="2024-03-01T15:01:45.991Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://latexalpha.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/source-code/index.html"},"headline":"论文源码","image":["https://latexalpha.github.io/img/og_image.png"],"datePublished":"2024-01-20T10:21:27.000Z","dateModified":"2024-03-01T15:01:45.991Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"Code: GitHub - isds-neu&#x2F;EQDiscovery  Paper: Physics-informed learning of governing equations from scarce data - Nature Comunications Deep Learning Framework: Remarks:   Code: dysco.imtlucca.it&amp;#"}</script><link rel="canonical" href="https://latexalpha.github.io/source-code/index.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>论文源码 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="PINN   Paper Code Framework Remarks    Physics-informed learning of governing equations from scarce data - Nature Comunications GitHub - EQDiscovery     Learning nonlinear state–space models using aut"><meta property="og:type" content="blog"><meta property="og:title" content="论文源码"><meta property="og:url" content="https://latexalpha.github.io/source-code/index.html"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="PINN   Paper Code Framework Remarks    Physics-informed learning of governing equations from scarce data - Nature Comunications GitHub - EQDiscovery     Learning nonlinear state–space models using aut"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://latexalpha.github.io/img/og_image.png"><meta property="article:published_time" content="2024-01-20T10:21:27.000Z"><meta property="article:modified_time" content="2024-03-23T08:59:29.616Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://latexalpha.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/source-code/index.html"},"headline":"论文源码","image":["https://latexalpha.github.io/img/og_image.png"],"datePublished":"2024-01-20T10:21:27.000Z","dateModified":"2024-03-23T08:59:29.616Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"PINN   Paper Code Framework Remarks    Physics-informed learning of governing equations from scarce data - Nature Comunications GitHub - EQDiscovery     Learning nonlinear state–space models using aut"}</script><link rel="canonical" href="https://latexalpha.github.io/source-code/index.html"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,79 +29,253 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">博客主页</a><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/categories">文章分类</a><a class="navbar-item" href="/tags">文章标签</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/projects">项目代码</a><a class="navbar-item is-active" href="/source-code">论文源码</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile">论文源码</h1><div class="content"><ul>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/isds-neu/EQDiscovery">GitHub - isds-neu&#x2F;EQDiscovery</a></p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">博客主页</a><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/categories">文章分类</a><a class="navbar-item" href="/tags">文章标签</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目代码</a><a class="navbar-item is-active" href="/source-code">论文源码</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><h1 class="title is-3 is-size-4-mobile">论文源码</h1><div class="content"><h2 id="PINN"><a href="#PINN" class="headerlink" title="PINN"></a>PINN</h2><table>
+<thead>
+<tr>
+<th>Paper</th>
+<th>Code</th>
+<th>Framework</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-021-26434-1">Physics-informed learning of governing equations from scarce data - Nature Comunications</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/isds-neu/EQDiscovery">GitHub - EQDiscovery</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0005109821001862">Learning nonlinear state–space models using autoencoders - ScienceDirect</a></td>
+<td><a target="_blank" rel="noopener" href="http://dysco.imtlucca.it/masti/autoencoders/">dysco.imtlucca.it&#x2F;masti&#x2F;autoencoders&#x2F;</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.02250">dynoNet: a neural network architecture for learning dynamical systems (arxiv. Org)</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/forgi86/dynonet">GitHub - dynonet</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.00669">Bayesian Learning to Discover Mathematical Operations in Governing Equations of Dynamic Systems</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/nips2021anonymous/MathONet">GitHub - MathONet</a></td>
+<td>Pytorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42005-022-00987-z">Discovering sparse interpretable dynamics from partial observations - Communications Physics (nature.com)</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/peterparity/symder">GitHub - symder</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0952197622003633">Semi-supervised Time Series Classification Model with Self-supervised Learning - ScienceDirect</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mrxiliang/sstsc">GitHub - sstsc</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s12045-021-1194-0">Machine Learning in Nonlinear Dynamical Systems</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Debanjan-Rana/ML_in_NLD">Github - ML_in_NLD</a></td>
+<td>TensorFlow</td>
+<td>提供了神经网络和 SINDy 方法的比较</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s10444-023-10065-9">Finite basis physics-informed neural networks (FBPINNs): a scalable domain decomposition approach for solving differential equations</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/benmoseley/FBPINNs">GitHub - FBPINNs</a></td>
+<td>JAX</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.08827">PINNacle: A Comprehensive Benchmark of Physics-Informed Neural Networks for Solving PDEs</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/i207M/PINNacle">GitHub - PINNacle</a></td>
+<td>PyTorch</td>
+<td>提供了一系列的 PINN 的实现。</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.14103.pdf">Physics-informed convolutional-recurrent neural networks for solving spatiotemporal PDEs</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/isds-neu/PhyCRNet">GitHub - PhyCRNet</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1911.03737">Physics-Informed Neural Networks for Power Systems</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/gmisy/Physics-Informed-Neural-Networks-for-Power-Systems">GitHub - PINN-PowerSystems</a></td>
+<td>TensorFlow</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2004.04026">Physics-Informed Neural Networks for Non-linear System Identification applied to Power System Dynamics</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/jbesty/PINN_system_identification">GitHub - PINN_system_identification</a></td>
+<td>TensorFlow</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.04781">Encoding physics to learn reaction-diffusion processes</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/isds-neu/PeRCNN">GitHub - PeRCNN</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+</tbody></table>
 <ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-021-26434-1">Physics-informed learning of governing equations from scarce data - Nature Comunications</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ETH-IBK-SMECH/PIDyNN">GitHub PIDyNN</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/loiseaujc/ea98de8521f09a809ac1ed206f6c6311">Linear Quadratic Regulator</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PML-UCF/pinn">Physics-informed neural networks package</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SalihTasdelen/remin">PINN solver implemented in Pytorch</a></li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="http://dysco.imtlucca.it/masti/autoencoders/">dysco.imtlucca.it&#x2F;masti&#x2F;autoencoders&#x2F;</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0005109821001862">Learning nonlinear state–space models using autoencoders - ScienceDirect</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
+<h2 id="稀疏回归"><a href="#稀疏回归" class="headerlink" title="稀疏回归"></a>稀疏回归</h2><table>
+<thead>
+<tr>
+<th>Paper</th>
+<th>Code</th>
+<th>Framework</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2211.05918">Derivative-based SINDy (DSINDy): Addressing the challenge of discovering governing equations from noisy data</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/CU-UQ/DSINDy">GitHub - DSINDy</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42005-022-00987-z">Discovering sparse interpretable dynamics from partial observations</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/peterparity/symder">GitHub - symder</a></td>
+<td>Haiku</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0888327023000729">PiSL: Physics-informed Spline Learning for data-driven identification of nonlinear dynamical systems - ScienceDirect</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/isds-neu/PiSL">GitHub - PiSL</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="符号回归"><a href="#符号回归" class="headerlink" title="符号回归"></a>符号回归</h2><table>
+<thead>
+<tr>
+<th>Paper</th>
+<th>Code</th>
+<th>Framework</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.04825">Integration of Neural Network-Based Symbolic Regression in Deep Learning for Scientific Discovery</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/samuelkim314/DeepSymReg">GitHub - DeepSymReg</a>, <a target="_blank" rel="noopener" href="https://github.com/SiddeshSambasivam/Deep-symbolic-regression">GitHub - Deep-symbolic-regression</a>, <a target="_blank" rel="noopener" href="https://github.com/samuelkim314/DeepSymRegTorch">GitHub - DeepSymRegTorch</a></td>
+<td>TensorFlow, vPytorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.04871">Deep symbolic regression: Recovering mathematical expressions from data via risk-seeking policy gradients</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/HongsupOH/DeepSymbolicRegression">GitHub - DeepSymbolicRegression</a></td>
+<td>Pytorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s00466-023-02298-8">Semi-supervised Invertible Neural Operators for Bayesian Inverse Problems</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pkmtum/Semi-supervised_Invertible_Neural_Operators">GitHub - Semi-supervised_Invertible_Neural_Operators</a></td>
+<td>JAX, PyTorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2311.12579">Machine-Guided Discovery of a Real-World Rogue Wave Model</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/dionhaefner/rogue-wave-discovery">GitHub - rogue-wave-discovery</a></td>
+<td>JAX</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="算子学习"><a href="#算子学习" class="headerlink" title="算子学习"></a>算子学习</h2><table>
+<thead>
+<tr>
+<th>Paper</th>
+<th>Code</th>
+<th>Framework</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42256-021-00302-5">Learning nonlinear operators via DeepONet based on the universal approximation theorem of operators</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/lululxvi/deeponet">GitHub - DeepONet</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.08895">Fourier Neural Operator for Parametric Partial Differential Equations</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/khassibi/fourier-neural-operator">GitHub - fourier-neural-operator</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=S4fEjmWg4X">Neural Inverse Operators for solving PDE Inverse Problems</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mroberto166/nio">GitHub - nio</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2203.05071">On the influence of over-parameterization in manifold based surrogates and deep neural operators</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/katiana22/surrogate-overparameterization">GitHub - surrogate-overparameterization</a></td>
+<td>TensorFlow</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2111.03794">Physics-informed Neural Operator for Learning Partial Differential Equation</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/neuraloperator/physics_informed">GitHub - physics_informed</a></td>
+<td>PyTorch</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="时间序列"><a href="#时间序列" class="headerlink" title="时间序列"></a>时间序列</h2><h3 id="Time-Series-Model"><a href="#Time-Series-Model" class="headerlink" title="Time Series Model"></a>Time Series Model</h3><ul>
+<li>A recurrent latent variable model for sequential data，NIPS 2015 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.02216">PDF</a>] [<a target="_blank" rel="noopener" href="http://www.github.com/jych/nips2015_vrnn">Code</a>]</li>
+<li>Sequential neural models with stochastic layers，NIPS 2016 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1605.07571">PDF</a>] [<a target="_blank" rel="noopener" href="http://www.github.com/marcofraccaro/srnn">Code</a>]</li>
+<li>Structured Inference Networks for Nonlinear State Space Models，AAAI 2017 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1609.09869">PDF</a>] [Code]</li>
+<li>Factorized Inference in Deep Markov Models for Incomplete Multimodal Time Series，AAAI 2020 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.13570">PDF</a>] [Code]</li>
+<li>Multi-period Time Series Modeling with Sparsity via Bayesian Variational Inference，2017 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1707.00666">PDF</a>] [Code]</li>
+<li>Unsupervised Scalable Representation Learning for Multivariate Time Series，NeurIPS 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1901.10738.pdf">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/White-Link/UnsupervisedScalableRepresentationLearningTimeSeries">Code</a>]</li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/forgi86/dynonet">GitHub - forgi86&#x2F;dynonet</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2006.02250">[2006.02250] dynoNet: a neural network architecture for learning dynamical systems (arxiv. Org)</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
+<h3 id="Time-series-decomposition"><a href="#Time-series-decomposition" class="headerlink" title="Time series decomposition"></a>Time series decomposition</h3><ul>
+<li>RobustSTL: A Robust Seasonal-Trend Decomposition Algorithm for Long Time Series，AAAI 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1812.01767">PDF</a>] [Code]</li>
+<li>RobustTrend: A Huber Loss with a Combined First and Second Order Difference<br>Regularization for Time Series Trend Filtering，IJCAI 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1906.03751">PDF</a>] [Code]</li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/peterparity/symder">GitHub - peterparity&#x2F;symder</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42005-022-00987-z">Discovering sparse interpretable dynamics from partial observations</a></li>
-<li>Deep Learning Framework: Haiku</li>
-<li>Remarks:</li>
+<h3 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h3><ul>
+<li>A Multi-Horizon Quantile Recurrent Forecaster，NIPS 2017 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1711.11053">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/jingw2/demand_forecast">Code</a>]</li>
+<li>DeepAR: Probabilistic Forecasting with Autoregressive Recurrent Networks，2017 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1704.04110">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/jingw2/demand_forecast">Code</a>]</li>
+<li>Deep Factors for Forecasting，ICML 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.12417">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/jingw2/demand_forecast">Code</a>]</li>
+<li>A Dual-Stage Attention-Based Recurrent Neural Network for Time Series Prediction，IJCAI 2017 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1704.02971">PDF</a>] [Code]</li>
+<li>Multilevel Wavelet Decomposition Network for Interpretable Time Series Analysis，KDD 2018 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1806.08946">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/JacobWang95/mWDN">Code</a>]</li>
+<li>Deep State Space Models for Time Series Forecasting，NeurIPS 2018 [<a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/8004-deep-state-space-models-for-time-series-forecasting">PDF</a>] [Code]</li>
+<li>Explainable Deep Neural Networks for Multivariate Time Series Predictions，IJCAI 2019 [<a target="_blank" rel="noopener" href="https://www.ijcai.org/proceedings/2019/0932.pdf">PDF</a>] [Code]</li>
+<li>Modeling Extreme Events in Time Series Prediction，KDD 2018 [<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~hexn/papers/kdd19-timeseries.pdf">PDF</a>] [Code]</li>
+<li>Learning Interpretable Deep State Space Model for Probabilistic Time Series Forecasting，IJCAI 2019 [<a target="_blank" rel="noopener" href="https://www.ijcai.org/proceedings/2019/0402.pdf">PDF</a>] [Code]</li>
+<li>Shape and Time Distortion Loss for Training Deep Time Series Forecasting Models，NeurIPS 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1909.09020.pdf">PDF</a>] [Code]</li>
+<li>Enhancing the Locality and Breaking the Memory Bottleneck of Transformer on Time Series Forecasting，NeurIPS 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1907.00235.pdf">PDF</a>] [Code]</li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/nips2021anonymous/MathONet">GitHub - nips2021anonymous&#x2F;MathONet</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.00669">Bayesian Learning to Discover Mathematical Operations in Governing Equations of Dynamic Systems</a></li>
-<li>Deep Learning Framework: Pytorch</li>
-<li>Remarks:</li>
+<h3 id="Anomaly-Detection"><a href="#Anomaly-Detection" class="headerlink" title="Anomaly Detection"></a>Anomaly Detection</h3><ul>
+<li>LSTM-based encoder-decoder for multi-sensor anomaly detection，2016 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1607.00148">PDF</a>] [Code]</li>
+<li>Anomaly Detection in Streams with Extreme Value Theory，KDD 2017 [<a target="_blank" rel="noopener" href="https://www.kdd.org/kdd2017/papers/view/anomaly-detection-in-streams-with-extreme-value-theory">PDF</a>] [Code]</li>
+<li>Robust Anomaly Detection for Multivariate Time Series through Stochastic Recurrent Neural Network，KDD 2019 [<a target="_blank" rel="noopener" href="http://delivery.acm.org/10.1145/3340000/3330672/p2828-su.pdf?ip=114.247.56.234&id=3330672&acc=ACTIVE%20SERVICE&key=BF85BBA5741FDC6E.C98212438850C910.4D4702B0C3E38B35.4D4702B0C3E38B35&__acm__=1575979585_4370ce04b0d7150ccbd1381b781f594e">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/smallcowbaby/OmniAnomaly">Code</a>]</li>
+<li>Detecting Spacecraft Anomalies Using LSTMs and Nonparametric Dynamic Thresholding，KDD 2018 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1802.04431">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/khundman/telemanom">Code</a>]</li>
+<li>A Deep Neural Network for Unsupervised Anomaly Detection and Diagnosis in Multivariate Time Series Data，AAAI 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1811.08055">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/7fantasysz/MSCRED">Code</a>]</li>
+<li>BeatGAN: Anomalous Rhythm Detection using Adversarially Generated Time Series，IJCAI 2019 [<a target="_blank" rel="noopener" href="https://www.ijcai.org/proceedings/2019/0616.pdf">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/Vniex/BeatGAN">Code</a>]</li>
+<li>Deep Anomaly Detection with Deviation Networks，KDD 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1911.08623">PDF</a>] [Code]</li>
+<li>Deep autoencoding gaussian mixture model for unsupervised anomaly detection，ICLR 2018 [<a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~bzong/doc/iclr18-dagmm.pdf">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/danieltan07/dagmm">Code</a>]</li>
+<li>A Multimodal Anomaly Detector for Robot-Assisted Feeding Using an LSTM-based Variational Autoencoder，IEEE Robotics and Automation Letters 2018 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1711.00614">PDF</a>] [Code]</li>
+<li>MAD-GAN: Multivariate Anomaly Detection for Time Series Data with Generative Adversarial Networks，2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1901.04997">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/LiDan456/MAD-GANs">Code</a>]</li>
+<li>Outlier Detection for Time Series with Recurrent Autoencoder Ensembles，IJCAI 2019 [<a target="_blank" rel="noopener" href="https://www.ijcai.org/proceedings/2019/0378.pdf">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/tungk/OED">Code</a>]</li>
+<li>Sequential Anomaly Detection using Inverse Reinforcement Learning，KDD 2019 [<a target="_blank" rel="noopener" href="https://www.kdd.org/kdd2019/accepted-papers/view/sequential-anomaly-detection-using-inverse-reinforcement-learning">PDF</a>] [Code]</li>
+<li>Sparse Modeling-Based Sequential Ensemble Learning for Effective Outlier Detection in High-Dimensional Numeric Data，AAAI 2018 [<a target="_blank" rel="noopener" href="https://pdfs.semanticscholar.org/882e/06d18c0fc0645ae559633eb178a7a41cfe79.pdf?_ga=2.150791094.1460350826.1575981115-1116311619.1575981115">PDF</a>] [Code]</li>
+<li>Time-Series Anomaly Detection Service at Microsoft，KDD 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1906.03821">PDF</a>] [Code]</li>
+<li>Unsupervised Anomaly Detection for Intricate KPIs via Adversarial Training of VAE，INFOCOM 2019 [<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8737430/">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/yantijin/Buzz">Code</a>]</li>
+<li>Unsupervised Anomaly Detection via Variational Auto-Encoder for Seasonal KPIs in Web Applications，WWW 2018 [<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1802.03903.pdf">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/haowen-xu/donut">Code</a>]</li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/peterparity/symder">GitHub - peterparity&#x2F;symder</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42005-022-00987-z">Discovering sparse interpretable dynamics from partial observations - Communications Physics (nature.com)</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><ul>
+<li>Modeling Combinatorial Evolution in Time Series Prediction，2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.05006v1">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/VachelHU/ESGRN">Code</a>]</li>
+<li>SOM-VAE: Interpretable Discrete Representation Learning on Time Series，ICLR 2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1806.02199">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/ratschlab/SOM-VAE">Code</a>]</li>
+<li>Variational PSOM: Deep Probabilistic Clustering with Self-Organizing Maps，2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.01590">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/ratschlab/variational-psom">Code</a>]</li>
+<li>Time2Graph: Revisiting Time Series Modeling with Dynamic Shapelets，AAAI 2020 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1911.04143">PDF</a>] [<a target="_blank" rel="noopener" href="https://github.com/AnonyAuthor/Time2Graph">Code</a>]</li>
+<li>Multivariate Time Series Imputation with Variational Autoencoders，2019 [<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.04155">PDF</a>] [Code]</li>
 </ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/isds-neu/PiSL">GitHub - isds-neu&#x2F;PiSL</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0888327023000729">PiSL: Physics-informed Spline Learning for data-driven identification of nonlinear dynamical systems - ScienceDirect</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
-</ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/mrxiliang/sstsc">GitHub - mrxiliang&#x2F;sstsc</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0952197622003633">Semi-supervised Time Series Classification Model with Self-supervised Learning - ScienceDirect</a></li>
-<li>Deep Learning Framework:</li>
-<li>Remarks:</li>
-</ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/samuelkim314/DeepSymReg">GitHub - samuelkim314&#x2F;DeepSymReg</a>, <a target="_blank" rel="noopener" href="https://github.com/SiddeshSambasivam/Deep-symbolic-regression">GitHub - SiddeshSambasivam&#x2F;Deep-symbolic-regression</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.04825">Integration of Neural Network-Based Symbolic Regression in Deep Learning for Scientific Discovery</a></li>
-<li>Deep Learning Framework: Pytorch</li>
-<li>Remarks:</li>
-</ul>
-</li>
-<li><p>Code: <a target="_blank" rel="noopener" href="https://github.com/Debanjan-Rana/ML_in_NLD">Github - Debanjan-Rana&#x2F;ML_in_NLD</a></p>
-<ul>
-<li>Paper: <a target="_blank" rel="noopener" href="https://link.springer.com/article/10.1007/s12045-021-1194-0">Machine Learning in Nonlinear Dynamical Systems</a></li>
-<li>Deep Learning Framework: TensorFlow</li>
-<li>Remarks: 提供了神经网络和 SINDy 方法的比较</li>
-</ul>
-</li>
-</ul>
-</div><div class="article-licensing box"><div class="licensing-title"><p>论文源码</p><p><a href="https://latexalpha.github.io/source-code/index.html">https://latexalpha.github.io/source-code/index.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-01-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-03-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Shangyu ZHAO"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Shangyu ZHAO</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">40</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">45</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/latexalpha" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/latexalpha"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/citations?user=Ze5Sk-gAAAAJ&amp;hl=en"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="ResearchGate" href="https://www.researchgate.net/profile/Shangyu-Zhao-3"><i class="fab fa-researchgate"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="ORCID" href="https://orcid.org/0000-0003-0381-3608"><i class="fab fa-orcid"></i></a></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/d6fe6f1714eb/">Command-line Interface (CLI), Terminal, and Shell</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/19754e3aa725/">编程经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/f595b75fb163/">Jupyter Notebook 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/ae1d42f5490e/">LaTeX 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/06cce8ce2e2d/">Obsidian 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+</div><div class="article-licensing box"><div class="licensing-title"><p>论文源码</p><p><a href="https://latexalpha.github.io/source-code/index.html">https://latexalpha.github.io/source-code/index.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-01-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-03-23</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Shangyu ZHAO"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Shangyu ZHAO</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">40</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">45</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/latexalpha" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/latexalpha"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Google Scholar" href="https://scholar.google.com/citations?user=Ze5Sk-gAAAAJ&amp;hl=en"><i class="fab fa-google"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="ResearchGate" href="https://www.researchgate.net/profile/Shangyu-Zhao-3"><i class="fab fa-researchgate"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="ORCID" href="https://orcid.org/0000-0003-0381-3608"><i class="fab fa-orcid"></i></a></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/d6fe6f1714eb/">Command-line Interface (CLI), Terminal, and Shell</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/19754e3aa725/">编程经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/f595b75fb163/">Jupyter Notebook 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/ae1d42f5490e/">LaTeX 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-03-01T06:37:54.000Z">2024-03-01</time></p><p class="title"><a href="/06cce8ce2e2d/">Obsidian 使用经验积累</a></p><p class="categories"><a href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></p></div></article></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
