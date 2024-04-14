@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Zotero6 使用经验积累 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要记录了 Zotero6 的使用经验， 包括软件的使用、插件的使用、Citation Style Language 等。"><meta property="og:type" content="blog"><meta property="og:title" content="Zotero6 使用经验积累"><meta property="og:url" content="https://latexalpha.github.io/b5d60d25b6af/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要记录了 Zotero6 的使用经验， 包括软件的使用、插件的使用、Citation Style Language 等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_subfolder.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_renaming-rules.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_files-and-folders.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_zotfile-preferences.png"><meta property="article:published_time" content="2021-03-01T06:37:54.000Z"><meta property="article:modified_time" content="2024-04-14T05:55:04.811Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="Zotero"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_subfolder.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/b5d60d25b6af/"},"headline":"Zotero6 使用经验积累","image":["https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_subfolder.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_renaming-rules.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_files-and-folders.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_zotfile-preferences.png"],"datePublished":"2021-03-01T06:37:54.000Z","dateModified":"2024-04-14T05:55:04.811Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要记录了 Zotero6 的使用经验， 包括软件的使用、插件的使用、Citation Style Language 等。"}</script><link rel="canonical" href="https://latexalpha.github.io/b5d60d25b6af/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-01T06:37:54.000Z" title="2021/3/1 14:37:54">2021-03-01</time>发表</span><span class="level-item"><time dateTime="2024-04-14T05:55:04.811Z" title="2024/4/14 13:55:04">2024-04-14</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></span><span class="level-item">7 分钟读完 (大约1046个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Zotero6 使用经验积累</h1><div class="content"><p>本文主要记录了 Zotero6 的使用经验， 包括软件的使用、插件的使用、Citation Style Language 等。</p>
+<span id="more"></span>
+
+<h2 id="Zotero-软件使用"><a href="#Zotero-软件使用" class="headerlink" title="Zotero 软件使用"></a>Zotero 软件使用</h2><ul>
+<li>注意需要知道的是，很多批准的数据是存在于 Zotero 的数据库里面的，这个时候如果通过其他的 PDF 阅读器打开 PDF 是看不到那些批注的。只有对 PDF 进行的修改才可以在所有的地方都看到。</li>
+<li>Zotero 的附件类型<br>Zotero 附件类型包括：<ul>
+<li><code>文件</code>: 图标为系统默认图标或者 adobe 红，是 Zotero 默认的附件格式，存放在 <code>&lt;Data Directory Location&gt;/storage</code> 内一个 8 位数字和字母的子目录中。</li>
+<li><code>文件链接</code>: 图标为白色加小铁链，通常由 ZotFile 生成，实际保存在 <code>&lt;Linked Attachment Base Directory&gt;</code> 下。</li>
+<li><code>url 链接</code>: 图标为蓝色加小铁链，实际为文件的网址，联网时才能打开。</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.library.yorku.ca/web/research-learn/citing-your-work-academic-integrity/citations/zotero-vs-mendeley-comparison/">Zotero vs Mendeley Comparison - York University Libraries</a></p>
+<h2 id="插件-ZotFile-的使用"><a href="#插件-ZotFile-的使用" class="headerlink" title="插件 ZotFile 的使用"></a>插件 ZotFile 的使用</h2><ul>
+<li>功能<ul>
+<li>可以实现文件的批量重命名和格式化命名</li>
+<li>可以实现附件的跨设备同步</li>
+<li>可以使用 ZotFile 曲线救国的方式来达到查找库里删除的文件，但是本地还有的文件，方法就是修改重命名规则，进行重命名，然后看修改时间。</li>
+</ul>
+</li>
+<li>使用<ul>
+<li>使用 subfolder<br><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_subfolder.png" alt="Subfolder"></li>
+<li>重命名规则保持一致<br><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_renaming-rules.png" alt="Renaming Rules"></li>
+</ul>
+</li>
+</ul>
+<h3 id="ZotFile-配合同步盘实现附件跨平台、跨设备同步"><a href="#ZotFile-配合同步盘实现附件跨平台、跨设备同步" class="headerlink" title="ZotFile 配合同步盘实现附件跨平台、跨设备同步"></a>ZotFile 配合同步盘实现附件跨平台、跨设备同步</h3><ul>
+<li><p>配置附件链接的根目录</p>
+<ul>
+<li><p>配置附件链接根目录 <code>&lt;Linked Attachment Base Directory&gt;</code> 是 <code>文件链接</code> 附件的实际位置。</p>
+</li>
+<li><p>当 Zotero 访问 <code>文件链接</code> 附件时，会访问此目录下的相对路径。</p>
+</li>
+<li><p>为了达到同步附件的目的，需要将 <code>&lt;Linked Attachment Base Directory&gt;</code> 设置为同步盘的子目录。</p>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_files-and-folders.png" alt="Files and Folders"></p>
+</li>
+</ul>
+</li>
+<li><p>下载安装 ZotFile</p>
+</li>
+<li><p>配置 ZotFile</p>
+<ul>
+<li>打开 <code>ZotFile Preferences</code> 下的 <code>General Settings</code> 标签页。</li>
+<li><code>Source Folder for Attaching new Files</code> 设置为 <code>Data Directory Location</code> 下的 <code>storage</code></li>
+<li><code>Location of Files</code> 设置为 <code>Linked Attachment Base Directory</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/zotero6_zotfile-preferences.png" alt="Zotfile Preferences"></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31453719">Zotero 跨平台同步附件的实现</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28325366">Zotero 5.0 使用教程&#x2F;坚果云同步盘和 Zotero 的配置过程详解</a></p>
+<h2 id="插件-DOI-Manager"><a href="#插件-DOI-Manager" class="headerlink" title="插件 DOI Manager"></a>插件 DOI Manager</h2><h2 id="插件-Better-BibTeX-for-Zotero"><a href="#插件-Better-BibTeX-for-Zotero" class="headerlink" title="插件 Better BibTeX for Zotero"></a>插件 Better BibTeX for Zotero</h2><p>这个插件可以实现参考文献库自动更新，但是取消的时候也需要进入相对应的位置进行查看。</p>
+<h2 id="插件-Quicklook"><a href="#插件-Quicklook" class="headerlink" title="插件 Quicklook"></a>插件 Quicklook</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAxNzgyMDg0MQ==&mid=2650455737&idx=6&sn=dd1464f8566233d8dfe4a7945e2838fa&scene=178&cur_album_id=1319074508795641857#rd">Zotero | 这款插件让 Zotero 具备文献预览功能！</a></p>
+<h2 id="Citation-Style-Language"><a href="#Citation-Style-Language" class="headerlink" title="Citation Style Language"></a>Citation Style Language</h2><p><a target="_blank" rel="noopener" href="https://zotero-cn.github.io/csl-doc-chinese/">首页 - CSL 中文文档</a></p>
+<h3 id="Citation-Styles-Website"><a href="#Citation-Styles-Website" class="headerlink" title="Citation Styles Website"></a>Citation Styles Website</h3><p><a target="_blank" rel="noopener" href="https://editor.citationstyles.org/about/">About</a></p>
+<p><a target="_blank" rel="noopener" href="https://editor.citationstyles.org/searchByName/">CSL Search by Name</a></p>
+<p><a target="_blank" rel="noopener" href="https://editor.citationstyles.org/visualEditor/">Visual CSL Editor</a></p>
+<h3 id="“等”-和‘et-al’"><a href="#“等”-和‘et-al’" class="headerlink" title="“等” 和‘et al’"></a>“等” 和‘et al’</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/342753388">[Zotero]直接同时生成”等”和”et al”</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zoteroPane = <span class="title class_">Zotero</span>.<span class="title function_">getActiveZoteroPane</span>();</span><br><span class="line">items = zoteroPane.<span class="title function_">getSelectedItems</span>();</span><br><span class="line"><span class="keyword">var</span> rn = <span class="number">0</span>; <span class="comment">//计数替换条目个数</span></span><br><span class="line"><span class="keyword">var</span> lan = <span class="string">&quot;en-US&quot;</span>; <span class="comment">//替换的语言</span></span><br><span class="line"><span class="keyword">for</span> (item <span class="keyword">of</span> items) &#123;</span><br><span class="line">  <span class="keyword">var</span> la = item.<span class="title function_">getField</span>(<span class="string">&quot;language&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (la == <span class="string">&quot;en&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">//如果为空则替换</span></span><br><span class="line">    item.<span class="title function_">setField</span>(<span class="string">&quot;language&quot;</span>, lan);</span><br><span class="line">    rn += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">await</span> item.<span class="title function_">saveTx</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> rn + <span class="string">&quot;个条目语言被替换为&quot;</span> + lan + <span class="string">&quot;。&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Zotero-journalabbr-pulgin<br>这里使用的格式，只有语言的字段是 en-US 的时候， et al 和期刊缩写才会生效，所以需要手动更改语言字段（可以使用 json 语言，很快的），也需要补全缺失的 journal abbreviation。</li>
+</ul>
+<h3 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h3><p><a target="_blank" rel="noopener" href="https://forums.zotero.org/discussion/39412/problems-with-csl-1-0-1-citation-style-specifications">Problems with CSL 1.0.1 citation-style specifications</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/185026280">Zotero + CSL 编辑器，自定义文献引用格式，创建 PPT 中的短文献引用</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/435802153">如何在 Zotero 中设置中文参考文献格式？</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62396113">几个 GB&#x2F;T7714 相关的 csl 文件</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/redleafnew/Chinese-std-GB-T-7714-related-csl">GitHub - redleafnew&#x2F;Chinese-STD-GB-T-7714-related-csl: GB&#x2F;T 7714 相关的 csl 以及 Zotero 使用技巧及教程。</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Zotero6 使用经验积累</p><p><a href="https://latexalpha.github.io/b5d60d25b6af/">https://latexalpha.github.io/b5d60d25b6af/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-03-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Zotero/">Zotero</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/01e95879e8d7/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Windows 使用经验积累</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/cad4940bcd9d/"><span class="level-item">ANSYS 有限元仿真学习</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">12</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">23</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Zotero-软件使用"><span class="level-left"><span class="level-item">Zotero 软件使用</span></span></a></li><li><a class="level is-mobile" href="#插件-ZotFile-的使用"><span class="level-left"><span class="level-item">插件 ZotFile 的使用</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#ZotFile-配合同步盘实现附件跨平台、跨设备同步"><span class="level-left"><span class="level-item">ZotFile 配合同步盘实现附件跨平台、跨设备同步</span></span></a></li></ul></li><li><a class="level is-mobile" href="#插件-DOI-Manager"><span class="level-left"><span class="level-item">插件 DOI Manager</span></span></a></li><li><a class="level is-mobile" href="#插件-Better-BibTeX-for-Zotero"><span class="level-left"><span class="level-item">插件 Better BibTeX for Zotero</span></span></a></li><li><a class="level is-mobile" href="#插件-Quicklook"><span class="level-left"><span class="level-item">插件 Quicklook</span></span></a></li><li><a class="level is-mobile" href="#Citation-Style-Language"><span class="level-left"><span class="level-item">Citation Style Language</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Citation-Styles-Website"><span class="level-left"><span class="level-item">Citation Styles Website</span></span></a></li><li><a class="level is-mobile" href="#“等”-和‘et-al’"><span class="level-left"><span class="level-item">“等” 和‘et al’</span></span></a></li><li><a class="level is-mobile" href="#参考内容"><span class="level-left"><span class="level-item">参考内容</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
