@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>LabVIEW 使用经验积累 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文介绍了 LabVIEW 生成独立可执行程序和安装程序的方法。"><meta property="og:type" content="blog"><meta property="og:title" content="LabVIEW 使用经验积累"><meta property="og:url" content="https://latexalpha.github.io/275db2337dd9/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文介绍了 LabVIEW 生成独立可执行程序和安装程序的方法。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview01.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview02.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview03.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview04.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview05.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview06.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview07.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview08.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview09.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview10.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview11.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview12.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview13.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview14.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview15.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig01.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig02.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig03.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig04.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig05.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig06.png"><meta property="article:published_time" content="2020-03-12T12:39:23.000Z"><meta property="article:modified_time" content="2024-04-19T06:39:11.720Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="LabVIEW"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview01.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/275db2337dd9/"},"headline":"LabVIEW 使用经验积累","image":["https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview01.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview02.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview03.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview04.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview05.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview06.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview07.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview08.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview09.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview10.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview11.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview12.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview13.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview14.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview15.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig01.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig02.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig03.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig04.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig05.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig06.png"],"datePublished":"2020-03-12T12:39:23.000Z","dateModified":"2024-04-19T06:39:11.720Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文介绍了 LabVIEW 生成独立可执行程序和安装程序的方法。"}</script><link rel="canonical" href="https://latexalpha.github.io/275db2337dd9/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-03-12T12:39:23.000Z" title="2020/3/12 20:39:23">2020-03-12</time>发表</span><span class="level-item"><time dateTime="2024-04-19T06:39:11.720Z" title="2024/4/19 14:39:11">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/">软件使用</a></span><span class="level-item">27 分钟读完 (大约3998个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">LabVIEW 使用经验积累</h1><div class="content"><p>本文介绍了 LabVIEW 生成独立可执行程序和安装程序的方法。</p>
+<span id="more"></span>
+
+<h2 id="LavVIEW-基础功能的实现"><a href="#LavVIEW-基础功能的实现" class="headerlink" title="LavVIEW 基础功能的实现"></a>LavVIEW 基础功能的实现</h2><h3 id="LabVIEW-格式化字符串"><a href="#LabVIEW-格式化字符串" class="headerlink" title="LabVIEW 格式化字符串"></a>LabVIEW 格式化字符串</h3><p>数据库中时间的格式为 Datetime 格式但 LabVIEW 自带的时间获取函数格式与 DateTime 格式不对应。转换方法为使用格式化日期&#x2F;时间字符串. Vi 格式化字符为%Y-%m-%d%H:%M:%S%3 u 格式化后输出 2016-08-2914:28:19.080</p>
+<p><a target="_blank" rel="noopener" href="https://bbs.elecfans.com/jishu_933262_1_19.html">参考</a></p>
+<h3 id="LabVIEW-实现串口通信"><a href="#LabVIEW-实现串口通信" class="headerlink" title="LabVIEW 实现串口通信"></a>LabVIEW 实现串口通信</h3><p><a target="_blank" rel="noopener" href="http://www.elecfans.com/tongxin/tongxinmokuai/2017/1120/582413_a.html">LabVIEW 实现串口通信</a></p>
+<h3 id="DAQ-助手多通道操作"><a href="#DAQ-助手多通道操作" class="headerlink" title="DAQ 助手多通道操作"></a>DAQ 助手多通道操作</h3><p><a target="_blank" rel="noopener" href="https://bbs.elecfans.com/jishu_1588912_1_1.html">DAQ 助手多通道 输出部分</a></p>
+<h3 id="字符串日期转换为时间标识"><a href="#字符串日期转换为时间标识" class="headerlink" title="字符串日期转换为时间标识"></a>字符串日期转换为时间标识</h3><p><a target="_blank" rel="noopener" href="http://www.eepw.com.cn/article/201701/337285.htm">字符串日期转换为时间标识</a></p>
+<h3 id="LabVIEW-的-TDMS-格式文件存储与读取"><a href="#LabVIEW-的-TDMS-格式文件存储与读取" class="headerlink" title="LabVIEW 的 TDMS 格式文件存储与读取"></a>LabVIEW 的 TDMS 格式文件存储与读取</h3><ul>
+<li>TDMS 文件格式简介</li>
+</ul>
+<p>我们用 Labview 编写上位机的过程中，一般都会遇到文件存储的问题，例如接收到下位机上传的数据，这些实时数据需要保存起来，方便以后进行数据分析。大部人的第一反应是用数据库，如果数据量不大的话，是可以用 Access 数据库存储数据的，但是如果存储的数据量过大，且需要实时存储，此时用 Access 数据库的话可能会导致计算机内存占用过大进而导致计算机卡顿；但是，使用 TDMS 方式存储实时数据就不会出现这个问题。</p>
+<p>TDMS 全称 Technical Document Management System，最早是机务工程维修中高效管理技术资料等数据的计算机管理系统。TDMS 文件是 NI 公司推出的数据管理系统，以二进制方式存储数据，文件很小，速度很快，可以很好的解决实时数据的存储问题。TDMS 文件分为文件、通道组和通道三个部分。</p>
+<ul>
+<li>简单文件读&#x2F;写</li>
+<li>波形数据读&#x2F;写</li>
+<li>二维数组读&#x2F;写</li>
+</ul>
+<p>TDMS 可以存储二维数组或者字符串二维数组，数组的每一列作为一个通道。</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/de2c2dd30506">TDMS 文件存储与读取</a></p>
+<h2 id="LabVIEW-程序要点"><a href="#LabVIEW-程序要点" class="headerlink" title="LabVIEW 程序要点"></a>LabVIEW 程序要点</h2><p>现有的问题：</p>
+<ul>
+<li>写文件的时候不能显示，数据线程冲突</li>
+<li>写入的文件：每一个文件</li>
+</ul>
+<p>LabVIEW 队列的使用</p>
+<ul>
+<li>队列数据的传输，只能有一个入队列一个出队列，如果需要多输出的话，需要创建多个队列。</li>
+<li>队列的写入需要放在循环里面。</li>
+<li>队列的大小控制需要谨慎，一不小心就会出问题。</li>
+</ul>
+<p>找一个别人的振动测试软件，学习一下界面的设置，美化一下自己的界面。</p>
+<p>数据分析的结果保存到数据库，数据还是以文件的形式保存。这个需要和客户商量。</p>
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>创建数据库 <code>create table test(time timestamp, freq float[], amp float[]);</code></p>
+<p>写入数据库 <code>insert into test(time,freq, amp) values(‘2021-7-18:13:47:45’,‘&#123;1,2,3&#125;’, ‘&#123;10,8,9&#125;’);</code></p>
+<p>查询数据库 <code>select * from test</code></p>
+<h3 id="PgAdmin-III-PostgreSQL-清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法"><a href="#PgAdmin-III-PostgreSQL-清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法" class="headerlink" title="PgAdmin III PostgreSQL 清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法"></a>PgAdmin III PostgreSQL 清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法</h3><p>一般情况下，我们使用 delete 删除表中数据，但是 delete 是一条数据一条数据来删除表中的数据，直至表清空（保留表结构），但是当数据量很大时，它耗时较久。</p>
+<p>其实，删除表数据但保留表结构使用 truncate 更快速安全，使用方法为：</p>
+<ul>
+<li>当表没有其他关系时</li>
+</ul>
+<p>TRUNCATE TABLE tablename;</p>
+<ul>
+<li>当表中有外键时，要用级联方式删所有关联的数据</li>
+</ul>
+<p>TRUNCATE TABLE tablename CASCADE;</p>
+<p>清空数据库还原数据库为新建时的状态，在 postgreSQL 中，创建数据库时会自动创建 public 模式，一般我们把表都保存在该模式中，因此直接删除该模式再重新创建该模式。若数据在其他模式中，则把 public 换为数据表所在模式即可。</p>
+<ul>
+<li>删除 public 模式以及模式里面所有的对象</li>
+</ul>
+<p>DROP SCHEMA public CASCADE;</p>
+<ul>
+<li>创建 public 模式</li>
+</ul>
+<p>CREATE SCHEMA public;</p>
+<h2 id="LabVIEW-项目软件开发"><a href="#LabVIEW-项目软件开发" class="headerlink" title="LabVIEW 项目软件开发"></a>LabVIEW 项目软件开发</h2><h3 id="待开发功能列表"><a href="#待开发功能列表" class="headerlink" title="待开发功能列表"></a>待开发功能列表</h3><ul>
+<li>两个板卡共用一套软件 BID 拨码</li>
+<li>报警的功能：连续几个周期出现问题，就报警</li>
+</ul>
+<h3 id="现有数据采用什么特征处理？"><a href="#现有数据采用什么特征处理？" class="headerlink" title="现有数据采用什么特征处理？"></a>现有数据采用什么特征处理？</h3><p>数据的均方差</p>
+<p>数据的最大值</p>
+<p>振动烈度</p>
+<h3 id="如何进行状态监测？"><a href="#如何进行状态监测？" class="headerlink" title="如何进行状态监测？"></a>如何进行状态监测？</h3><p>每隔一段时间，读取 TDMS 文件</p>
+<h3 id="软件分为哪些模块？"><a href="#软件分为哪些模块？" class="headerlink" title="软件分为哪些模块？"></a>软件分为哪些模块？</h3><p>数据处理模块</p>
+<p>历史数据分析</p>
+<p>数据回放</p>
+<h3 id="开发过程经验记录"><a href="#开发过程经验记录" class="headerlink" title="开发过程经验记录"></a>开发过程经验记录</h3><ul>
+<li>如何实现数据的拼接？</li>
+<li>LabVIEW 每通道采样数&#x3D;采样率</li>
+<li>采样率和采样数的设置</li>
+<li>数据 $\rightarrow$ 数据拼接 $\rightarrow$ 数据处理</li>
+<li>生产者、消费者模式</li>
+</ul>
+<h2 id="LabVIEW-项目软件生成我的安装程序和我的应用程序"><a href="#LabVIEW-项目软件生成我的安装程序和我的应用程序" class="headerlink" title="LabVIEW 项目软件生成我的安装程序和我的应用程序"></a>LabVIEW 项目软件生成我的安装程序和我的应用程序</h2><h3 id="关于-LabVIEW-运行引擎"><a href="#关于-LabVIEW-运行引擎" class="headerlink" title="关于 LabVIEW 运行引擎"></a><strong>关于 LabVIEW 运行引擎</strong></h3><p>任何电脑，<strong>只要你想在上面运行 LabVIEW 生成的独立可执行程序（</strong>exe<strong>），你都需要在目标电脑上安装 LabVIEW 运行引擎</strong>。LabVIEW 运行引擎包含了：</p>
+<ul>
+<li>运行 LabVIEW 生成的可执行程序所需要的库和文件</li>
+<li>使用浏览器远程访问前面板所需的浏览器插件</li>
+<li>应用程序中生成 LabVIEW 报表所需要的一些组件</li>
+<li>一些 3 D 图表的支持等</li>
+</ul>
+<p>运行引擎本身就是支持多语言的，不需要安装特定语言版本的运行引擎。</p>
+<p>另外需要确保目标电脑上安装的运行引擎版本与开发应用程序时使用的 LabVIEW 版本一致。</p>
+<p>如果你想在一台电脑上运行多个版本的 LabVIEW 生成的可执行程序，那你的电脑必须安装与这些 LabVIEW 版本一一对应的多个版本的运行引擎。</p>
+<p>不同版本的 LabVIEW 运行引擎可以在 NI 官方网站上免费<a target="_blank" rel="noopener" href="http://search.ni.com/nisearch/app/main/p/bot/no/ap/global/lang/zhs/pg/1/q/labview%20run-time%20engine/">下载</a>到。</p>
+<h3 id="关于硬件驱动"><a href="#关于硬件驱动" class="headerlink" title="关于硬件驱动"></a>关于硬件驱动</h3><p>如果您的程序使用了 NI 硬件的驱动，那么在目标电脑上就需要安装对应版本的驱动程序。</p>
+<p>以 DAQmx 为例，比方说您在实现一个数据采集任务时用到了某个版本的 DAQmx 驱动，将来在目标电脑上就需要安装对应版本的 DAQmx 驱动。</p>
+<p>综上所述，目标电脑上安装 LabVIEW 运行引擎是必须的，而硬件驱动的安装则取决于您的程序是否有使用该硬件驱动。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>生成 <strong>独立可执行程序</strong> 和 <strong>安装程序</strong> 需要用到应用程序生成器，LabVIEW 专业开发版包含有应用程序生成器，基础版和完全开发版则需要单独购买。</p>
+<p>在生成独立可执行应用程序之前需要做一些检查工作，LabVIEW 帮助文档中列出了一个检查列表：<a target="_blank" rel="noopener" href="http://zone.ni.com/reference/en-XX/help/371361J-01/lvconcepts/build_checklist/">http://zone.ni.com/reference/en-XX/help/371361J-01/lvconcepts/build_checklist&#x2F;</a></p>
+<h3 id="生成我的应用程序"><a href="#生成我的应用程序" class="headerlink" title="生成我的应用程序"></a>生成我的应用程序</h3><ul>
+<li>新建一个 LabVIEW 项目，或者打开一个已经建好的项目，项目中包含了您的 vi，确保 vi 运行正常。一些通过文件路径来使用文件的代码在编译成 exe 之后可能会出现文件找不到的错误，对于此类错误，可以参考 KB：<a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/794FB393A131BE108625796600305A2A?OpenDocument">5SD4CE7K</a>, <a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/F80E6C2FE22D3B2A48257178002CF939?OpenDocument">3HKEK93U</a>, <a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/5C6890D32D56089286256F170023E054?OpenDocument">2T6GI6BH</a>, <a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/B0F6B83A8F4F0DF1862573F5002CD9D0?OpenDocument">18RDJ60O</a>。新建的项目如图：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview01.png" alt="新建项目"></p>
+<ul>
+<li>在项目浏览器的<strong>程序生成规范</strong>处右键单击新建 $\rightarrow$<strong>应用程序（EXE）</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview02.png" alt="生成应用程序"></p>
+<ul>
+<li>设置目标文件名和目标目录。目标文件名是您将来生成的 exe 文件名，该文件位于目标目录中，默认的目标目录会在项目所在目录的上一级目录中新建一个 builds 文件夹，<br>生成的 exe 文件保存到这个目录中。如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview03.png" alt="目标信息"></p>
+<ul>
+<li>选择源文件，选中顶层 vi 单击“添加项”箭头将顶层 vi 添加到启动 vi 栏中，其他用到的子 vi 和文件可以添加到始终包括栏中，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview04.png" alt="源文件"></p>
+<ul>
+<li>可以使用 LabVIEW 默认图标作为应用程序图标，也可以选择自己设计一个图标：使用图标编辑器编辑并保存自己设计的图标，去掉“使用默认 LabVIEW 图标文件”前的勾选，在弹出的对话框中选择添加刚才保存的图标文件，注意“图标图像”的类型要与编辑该图标时选择的类型一致，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview05.png" alt="图标"></p>
+<ul>
+<li>选择预览 $\rightarrow$ 生成预览，然后可以看到将来会生成哪些文件，其中就包括我们的独立可执行应用程序，现在还看不到我们自定义的图标，不用着急，最后生成以后就可以看到了，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview06.png" alt="预览"></p>
+<ul>
+<li>最后选择“生成”，LabVIEW 就会弹出生成状态窗口，当生成结束后会提示生成的应用程序所在路径，您可以单击浏览打开应用程序所在目录，然后就可以看到带自定义图标的应用程序了，如果单击完成，则会关闭生成状态窗口，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview07.png" alt="生成"></p>
+<ul>
+<li>至此，我们已经完成了生成独立可执行应用程序的操作，如果目标电脑上已经安装了 LabVIEW 运行引擎和其他需要的组件，那么就可以将生成的 exe 文件拷贝到目标电脑上直接运行了。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview08.png" alt="可执行程序"></p>
+<p>以下篇幅介绍在生成 exe 的基础上如何生成 installer，即生成安装文件的操作。</p>
+<h3 id="生成我的安装程序"><a href="#生成我的安装程序" class="headerlink" title="生成我的安装程序"></a>生成我的安装程序</h3><ul>
+<li>在同一个项目中右键单击程序生成规范，选择新建 $\rightarrow$ 安装程序，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview09.png" alt="新建安装程序"></p>
+<ul>
+<li>在“产品信息”中设置您的产品名称和安装程序生成目录，产品名称会影响安装程序所在的路径名，并且对应着在 windows 添加删除程序列表中应用程序的名字，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview10.png" alt="产品信息"></p>
+<ul>
+<li>选择“目标”，修改目标名称，该名称决定了将来安装程序运行结束后，可执行文件会释放到哪个文件夹中，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview11.png" alt="目标"></p>
+<ul>
+<li>选择“源文件”，在项目文件视图中单击选择之前创建的应用程序生成规范，然后单击添加箭头，将应用程序添加到目标文件夹中，右边目标视图可以看到添加结果，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview12.png" alt="源文件"></p>
+<ul>
+<li>选择“快捷方式”，修改右边的快捷方式名称和子目录名称。快捷方式名称对应着将来在开始菜单中看到的快捷方式图标的名称，子目录对应着快捷方式在开始菜单中所处的文件夹名称，如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview13.png" alt="快捷方式"></p>
+<ul>
+<li>选择“附加安装程序”，勾选相应的 LabVIEW 运行引擎和必要的驱动程序以及工具包等，之后这些驱动以及工具包会一起包含在生成的 installer 中。LabVIEW 在这里会自动帮您勾选一些必要的 NI 安装程序，但是有可能并没有包含所有需要安装的程序，您的程序中使用到了哪些驱动以及工具包，在这里配置的时候就需要勾选哪些工具包。对于一些特定的工具包，如 NI OPCServers、DSC 运行引擎等不支持直接打包部署（KB: <a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/4C939D7011D05CB0862579750042946F?OpenDocument">5SS56RMQ</a> <a target="_blank" rel="noopener" href="http://digital.ni.com/public.nsf/allkb/9808524CBFFAF01A862576D60051DAEF?OpenDocument">56P8BSJT</a>），因此在这里会无法勾选或者勾选无效，这些工具包需要在目标电脑上再单独安装，如果您不能确定该工具包是否支持打包部署，请联系 NI 技术支持。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview14.png" alt="附加安装程序"></p>
+<ul>
+<li>单击“生成”按钮开始生成安装程序，同样会弹出一个生成状态窗口，生成过程完成后，单击浏览可以打开安装文件所在路径，您会看到一个 setup. Exe 文件，这个文件就是最终的安装文件。单击“完成”按钮关闭状态窗口。如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview15.png" alt="生成状态"></p>
+<ul>
+<li>现在，您可以将打包生成好的安装程序拷贝到目标电脑上运行了，需要注意的是，拷贝的时候要将整个文件夹拷贝到目标电脑上然后再运行 setup. Exe，安装过程与普通 windows 应用程序没有区别，安装结束后您就可以在目标电脑上运行您自己的应用程序了。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/einstein-2014731/p/4969052.html">使用 LabVIEW 如何生成应用程序（exe）和安装程序（installer）</a></p>
+<h2 id="项目软件-DAQ-数据采集程序安装指南"><a href="#项目软件-DAQ-数据采集程序安装指南" class="headerlink" title="项目软件 DAQ 数据采集程序安装指南"></a>项目软件 DAQ 数据采集程序安装指南</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>解压文件夹；</li>
+<li>进入 <strong>我的安装程序&#x2F;Volume&#x2F;setup. Exe</strong>，双击安装。</li>
+</ul>
+<h3 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h3><ul>
+<li>进入 <strong>我的应用程序&#x2F;Volume&#x2F;数据采集与存储. Exe</strong> 双击打开，界面如下：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig01.png" alt="软件主界面"></p>
+<ul>
+<li>选中所使用的通道：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig02.png" alt="选中通道"></p>
+<ul>
+<li>选中 <strong>数据采集</strong> 选项卡；</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig03.png" alt="选中数据采集选项卡"></p>
+<ul>
+<li>更改左侧采样率，点击 <strong>开始</strong> 按钮，即可观测数据是否输入；</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig04.png" alt="设置采样率"></p>
+<ul>
+<li>按照需要，更改右侧采集文件参数设置，点击 <strong>开始</strong> 按钮，即开始文件存储。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig05.png" alt="设置采集参数"></p>
+<ul>
+<li>采集的文件以 TDMS 形式存放于 <strong>我的应用程序&#x2F;Volume&#x2F;数据采集与存储. Exe</strong> 同文件夹下：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images21/labview-fig06.png" alt="TDMS文件位置"></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>如果遇到设置错误，需要关闭软件，重新打开进行设置。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>LabVIEW 使用经验积累</p><p><a href="https://latexalpha.github.io/275db2337dd9/">https://latexalpha.github.io/275db2337dd9/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-03-12</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/LabVIEW/">LabVIEW</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/cdc589e0e429/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">基于 Alist 和 RaiDrive 挂载云盘到本地</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/e33e40915968/"><span class="level-item">LabVIEW 基础知识学习记录</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span class="level-start"><span class="level-item">软件使用</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/"><span class="level-start"><span class="level-item">项目开发</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#LavVIEW-基础功能的实现"><span class="level-left"><span class="level-item">LavVIEW 基础功能的实现</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#LabVIEW-格式化字符串"><span class="level-left"><span class="level-item">LabVIEW 格式化字符串</span></span></a></li><li><a class="level is-mobile" href="#LabVIEW-实现串口通信"><span class="level-left"><span class="level-item">LabVIEW 实现串口通信</span></span></a></li><li><a class="level is-mobile" href="#DAQ-助手多通道操作"><span class="level-left"><span class="level-item">DAQ 助手多通道操作</span></span></a></li><li><a class="level is-mobile" href="#字符串日期转换为时间标识"><span class="level-left"><span class="level-item">字符串日期转换为时间标识</span></span></a></li><li><a class="level is-mobile" href="#LabVIEW-的-TDMS-格式文件存储与读取"><span class="level-left"><span class="level-item">LabVIEW 的 TDMS 格式文件存储与读取</span></span></a></li></ul></li><li><a class="level is-mobile" href="#LabVIEW-程序要点"><span class="level-left"><span class="level-item">LabVIEW 程序要点</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#数据库操作"><span class="level-left"><span class="level-item">数据库操作</span></span></a></li><li><a class="level is-mobile" href="#PgAdmin-III-PostgreSQL-清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法"><span class="level-left"><span class="level-item">PgAdmin III PostgreSQL 清空表并保留表结构、清空数据库还原数据库为新建时的状态的方法</span></span></a></li></ul></li><li><a class="level is-mobile" href="#LabVIEW-项目软件开发"><span class="level-left"><span class="level-item">LabVIEW 项目软件开发</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#待开发功能列表"><span class="level-left"><span class="level-item">待开发功能列表</span></span></a></li><li><a class="level is-mobile" href="#现有数据采用什么特征处理？"><span class="level-left"><span class="level-item">现有数据采用什么特征处理？</span></span></a></li><li><a class="level is-mobile" href="#如何进行状态监测？"><span class="level-left"><span class="level-item">如何进行状态监测？</span></span></a></li><li><a class="level is-mobile" href="#软件分为哪些模块？"><span class="level-left"><span class="level-item">软件分为哪些模块？</span></span></a></li><li><a class="level is-mobile" href="#开发过程经验记录"><span class="level-left"><span class="level-item">开发过程经验记录</span></span></a></li></ul></li><li><a class="level is-mobile" href="#LabVIEW-项目软件生成我的安装程序和我的应用程序"><span class="level-left"><span class="level-item">LabVIEW 项目软件生成我的安装程序和我的应用程序</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#关于-LabVIEW-运行引擎"><span class="level-left"><span class="level-item">关于 LabVIEW 运行引擎</span></span></a></li><li><a class="level is-mobile" href="#关于硬件驱动"><span class="level-left"><span class="level-item">关于硬件驱动</span></span></a></li><li><a class="level is-mobile" href="#准备工作"><span class="level-left"><span class="level-item">准备工作</span></span></a></li><li><a class="level is-mobile" href="#生成我的应用程序"><span class="level-left"><span class="level-item">生成我的应用程序</span></span></a></li><li><a class="level is-mobile" href="#生成我的安装程序"><span class="level-left"><span class="level-item">生成我的安装程序</span></span></a></li></ul></li><li><a class="level is-mobile" href="#项目软件-DAQ-数据采集程序安装指南"><span class="level-left"><span class="level-item">项目软件 DAQ 数据采集程序安装指南</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#安装"><span class="level-left"><span class="level-item">安装</span></span></a></li><li><a class="level is-mobile" href="#数据采集"><span class="level-left"><span class="level-item">数据采集</span></span></a></li><li><a class="level is-mobile" href="#注意事项"><span class="level-left"><span class="level-item">注意事项</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

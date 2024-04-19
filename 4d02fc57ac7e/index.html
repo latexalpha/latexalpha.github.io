@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Neovim 使用经验积累 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要记录了 Neovim 的使用经验，包括 Vim 使用基础知识，Neovim 基础使用以及 Neovim 配置 Python 开发环境等。"><meta property="og:type" content="blog"><meta property="og:title" content="Neovim 使用经验积累"><meta property="og:url" content="https://latexalpha.github.io/4d02fc57ac7e/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要记录了 Neovim 的使用经验，包括 Vim 使用基础知识，Neovim 基础使用以及 Neovim 配置 Python 开发环境等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/vim-movement-commands.png"><meta property="article:published_time" content="2024-01-11T06:37:54.000Z"><meta property="article:modified_time" content="2024-04-19T06:35:13.268Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="Vim"><meta property="article:tag" content="Neovim"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/vim-movement-commands.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/4d02fc57ac7e/"},"headline":"Neovim 使用经验积累","image":["https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/vim-movement-commands.png"],"datePublished":"2024-01-11T06:37:54.000Z","dateModified":"2024-04-19T06:35:13.268Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要记录了 Neovim 的使用经验，包括 Vim 使用基础知识，Neovim 基础使用以及 Neovim 配置 Python 开发环境等。"}</script><link rel="canonical" href="https://latexalpha.github.io/4d02fc57ac7e/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-01-11T06:37:54.000Z" title="2024/1/11 14:37:54">2024-01-11</time>发表</span><span class="level-item"><time dateTime="2024-04-19T06:35:13.268Z" title="2024/4/19 14:35:13">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/">项目开发</a></span><span class="level-item">13 分钟读完 (大约1995个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Neovim 使用经验积累</h1><div class="content"><p>本文主要记录了 Neovim 的使用经验，包括 Vim 使用基础知识，Neovim 基础使用以及 Neovim 配置 Python 开发环境等。</p>
+<span id="more"></span>
+
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Comment</td>
+<td>gcc</td>
+<td>注释当前行</td>
+</tr>
+<tr>
+<td>VimTeX</td>
+<td>&lt;leader&gt;ll</td>
+<td>编译与停止编译文档</td>
+</tr>
+<tr>
+<td>copilot.vim</td>
+<td>&lt;C-J&gt;</td>
+<td>补全推荐的代码</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://neovim.io/doc/user/">Help - Neovim docs</a></p>
+<h2 id="Vim-使用基础知识"><a href="#Vim-使用基础知识" class="headerlink" title="Vim 使用基础知识"></a>Vim 使用基础知识</h2><p><a target="_blank" rel="noopener" href="https://vim.rtorr.com/">Vim Cheat Sheet</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.viemu.com/a-why-vi-vim.html">Why, oh WHY, do those #?@! nutheads use vi?</a></p>
+<h3 id="Vim-的几种模式"><a href="#Vim-的几种模式" class="headerlink" title="Vim 的几种模式"></a>Vim 的几种模式</h3><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Normal Mode 正常模式</td>
+<td>使用 Vim 刚打开文件时一般会处于正常模式</td>
+</tr>
+<tr>
+<td>Insert Mode 输入模式</td>
+<td>在正常模式的情况下，按下 i, I, a, A, o, O 任意一个键就会进入输入模式，输入内容。</td>
+</tr>
+<tr>
+<td>Visual Mode 可视模式</td>
+<td>在正常模式下按下 V 或者 v 或者 Ctrl + v 进入可视模式，在这个模式里会有点像是用鼠标操作的感觉，有时候会很方便。</td>
+</tr>
+</tbody></table>
+<p>有博客说有四个模式，还包括一个命令模式，但是在 VScode Vim 下没有这个模式，在正常模式下即可以直接输入命令。常用的命令有：:q（退出）、:q!（强制退出）、:w（保存）、:wq（保存并退出）。</p>
+<p><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/cs107/resources/vim">CS107 The Vim Editor (stanford.edu)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.redhat.com/sysadmin/four-things-vim">The four things you must be able to do in Vim | Enable Sysadmin (redhat.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://linuxhandbook.com/vim-modes/">What are Vim Modes? How to Change Them? (linuxhandbook.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.techtarget.com/searchdatacenter/tutorial/How-to-use-Vim-in-Linux">How to use Vim in Linux | TechTarget</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.warp.dev/terminus/vim-modes">What are the 7 Vim &#x2F; Vi Modes? (warp.dev)</a></p>
+<h3 id="Vim-移动命令"><a href="#Vim-移动命令" class="headerlink" title="Vim 移动命令"></a>Vim 移动命令</h3><ul>
+<li>光标移动到行首：0</li>
+<li>光标移动到行尾：$</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images23/vim-movement-commands.png" alt="vim-movement-commands"></p>
+<h3 id="Vim-查找与替换命令"><a href="#Vim-查找与替换命令" class="headerlink" title="Vim 查找与替换命令"></a>Vim 查找与替换命令</h3><ul>
+<li>基本操作命令 <strong>注：联想 Y 7000 没有 Home 键和 End 键</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>J</td>
+<td>合并两行</td>
+</tr>
+<tr>
+<td>x</td>
+<td>删除光标所在处的内容</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>删除一个词</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Vim 命令里 search and replace 内容中有 slash 该怎么办</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/11823616/how-to-include-forward-slash-in-vi-search-replace">How to include forward slash in vi search &amp; replace</a></p>
+</li>
+</ul>
+<h3 id="Vim-正则表达式"><a href="#Vim-正则表达式" class="headerlink" title="Vim 正则表达式"></a>Vim 正则表达式</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">%</span><span class="language-bash">s/[0-9]\./- /c</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://tanqisen.github.io/blog/2013/01/13/vim-search-replace-regex/">vim 查找替换及正则表达式的使用 - Cooper’s Blog (tanqisen.github.io)</a></p>
+<h3 id="应用实例-：替换-Markdown-文件里失效的-Gitee-图床链接"><a href="#应用实例-：替换-Markdown-文件里失效的-Gitee-图床链接" class="headerlink" title="应用实例 ：替换 Markdown 文件里失效的 Gitee 图床链接"></a>应用实例 ：替换 Markdown 文件里失效的 Gitee 图床链接</h3><ul>
+<li>命令 %表示对当前文件进行替换</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/gitee.com\/xxxxx\/image_bed\/raw\/master\/img/raw.githubusercontent.com\/xxxxx\/image_bed\/main\/img_gitee/gc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\&lt;gitee.com\/latexalpha\/image_bed\/raw\/master\/img\&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lua-语言基础知识"><a href="#Lua-语言基础知识" class="headerlink" title="Lua 语言基础知识"></a>Lua 语言基础知识</h2><p><a target="_blank" rel="noopener" href="https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/">Everything you need to know to configure neovim using lua</a></p>
+<h2 id="Neovim-基础使用"><a href="#Neovim-基础使用" class="headerlink" title="Neovim 基础使用"></a>Neovim 基础使用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:echo stdpath(&#x27;config&#x27;) # 查看 Nvim 的配置文件目录，也就是 init.vim 的路径</span><br><span class="line">:h init.vim # 查看初始配置文件的帮助文档</span><br><span class="line">:h xdg # 查看基本目录 (base-directories) 的帮助文档</span><br><span class="line">vim.keymap.set() # 快捷键映射</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 初始 init.lua 备份</span></span><br><span class="line"><span class="keyword">local</span> options = &#123; noremap = <span class="literal">true</span> &#125;</span><br><span class="line">vim.keymap.set(<span class="string">&quot;i&quot;</span>, <span class="string">&quot;jk&quot;</span>, <span class="string">&quot;&lt;ESC&gt;&quot;</span>, options)</span><br><span class="line">vim.keymap.set(<span class="string">&quot;t&quot;</span>, <span class="string">&quot;jk&quot;</span>, <span class="string">&quot;&lt;C-\\&gt;&lt;C-n&gt;&quot;</span>, options)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> vim.g.vscode <span class="keyword">then</span></span><br><span class="line">    <span class="comment">-- VSCode extension</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="comment">-- ordinary Neovim</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> set = vim.opt <span class="comment">-- set options</span></span><br><span class="line">set.tabstop = <span class="number">4</span></span><br><span class="line">set.softtabstop = <span class="number">4</span></span><br><span class="line">set.shiftwidth = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Neovim-配置前准备工作"><a href="#Neovim-配置前准备工作" class="headerlink" title="Neovim 配置前准备工作"></a>Neovim 配置前准备工作</h2><ul>
+<li><p>安装 Nerd Font, Windows Terminal 最佳字体为 CaskaydiaCove NFM</p>
+<p><a target="_blank" rel="noopener" href="https://www.nerdfonts.com/font-downloads">Nerd Fonts - Iconic font aggregator, glyphs&#x2F;icons collection, &amp; fonts patcher</a></p>
+</li>
+<li><p>安装 wget 和 PowerShell 7 <strong>Mason Core</strong> 插件使用</p>
+<p><a target="_blank" rel="noopener" href="https://www.jcchouinard.com/wget/">How to use Wget: Install, Commands and Examples (Mac &amp; Windows) (jcchouinard.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3">在 Windows 上安装 PowerShell - PowerShell | Microsoft Learn</a></p>
+</li>
+<li><p>安装 Node. Js 和 npm <strong>Mason Languages</strong> 插件使用</p>
+<p><a target="_blank" rel="noopener" href="https://www.how2shout.com/how-to/how-to-install-node-js-and-npm-on-windows-10-or-11-using-cmd.html">Install Node.js and NPM on Windows 10 or 11 using command line (how2shout.com)</a></p>
+</li>
+<li><p>安装 c++ 编译器 <strong>Treesitter</strong> 插件使用，，</p>
+<p>按照官方指引，安装 <code>LLVM-MinGW</code> 随后添加其 <code>bin</code> 文件夹到 PATH。</p>
+<p><a target="_blank" rel="noopener" href="https://www.mingw-w64.org/downloads/">Downloads - MinGW-w64</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mstorsjo/llvm-mingw/releases">Releases · mstorsjo&#x2F;llvm-mingw (github.com)</a></p>
+</li>
+<li><p>安装 ripgrep 和 fd <strong>Telescope</strong> 插件使用</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/BurntSushi/ripgrep">GitHub - BurntSushi&#x2F;ripgrep: ripgrep recursively searches directories for a regex pattern while respecting your gitignore</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sharkdp/fd">GitHub - sharkdp&#x2F;fd: A simple, fast and user-friendly alternative to ‘find’</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">winget install BurntSushi.ripgrep.MSVC # ripgrep</span><br><span class="line">winget install sharkdp.fd # fd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导出全部快捷键到文件，需提前创建文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvim --headless &#x27;+redir! &gt; ~\nvim_keymaps.md&#x27; &#x27;+silent verbose map&#x27; &#x27;+redir END&#x27; +qa</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Neovim-配置主题"><a href="#Neovim-配置主题" class="headerlink" title="Neovim 配置主题"></a>Neovim 配置主题</h2><p><a target="_blank" rel="noopener" href="https://fsymbols.com/generators/carty/">ASCII Text Art Generator</a></p>
+<h2 id="Neovim-配置-Markdown-编辑器"><a href="#Neovim-配置-Markdown-编辑器" class="headerlink" title="Neovim 配置 Markdown 编辑器"></a>Neovim 配置 Markdown 编辑器</h2><p>虽然有插件，但是需要借助浏览器渲染，使用起来比较麻烦，还是建议直接使用 Obsidian, 功能强大，有插件社区，可扩展性强。</p>
+<h2 id="Neovim-配置-Python-开发环境"><a href="#Neovim-配置-Python-开发环境" class="headerlink" title="Neovim 配置 Python 开发环境"></a>Neovim 配置 Python 开发环境</h2><p><a target="_blank" rel="noopener" href="https://roobert.github.io/2022/12/03/Extending-Neovim/">Neovim Spaghetti - LSP Servers, Linters, Formatters, and Treesitter – roobert</a></p>
+<h3 id="Autocomplete-and-IntelliSense"><a href="#Autocomplete-and-IntelliSense" class="headerlink" title="Autocomplete and IntelliSense"></a>Autocomplete and IntelliSense</h3><p>IntelliSense is a general term for code editing features that relate to code completion.</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/editing">Editing Python Code in Visual Studio Code</a></p>
+<p>利用 <strong>nvim-cmp</strong> 插件，还需要 Language server 提供支持 。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hrsh7th/nvim-cmp">GitHub - hrsh7th&#x2F;nvim-cmp: A completion plugin for neovim coded in Lua.</a></p>
+<p><a target="_blank" rel="noopener" href="https://microsoft.github.io/language-server-protocol/">Official page for Language Server Protocol (microsoft.github.io)</a></p>
+<h3 id="Linting"><a href="#Linting" class="headerlink" title="Linting"></a>Linting</h3><p>Linting highlights syntactical and stylistic problems in your Python source code, which often helps you identify and correct subtle programming errors or unconventional coding practices that can lead to errors.</p>
+<p>Linting is distinct from <strong>Formatting</strong> because linting analyzes how the code runs and detects errors whereas formatting only restructures how code <strong>appears</strong>.</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/linting">Linting Python in Visual Studio Code</a></p>
+<p>利用 <strong>nvim-lspconfig</strong> 插件配置，<strong>pyright</strong> 和<strong>ruff-lsp</strong>提供支持，<strong>ruff-lsp</strong> 需要提前 <code>pip install ruff-lsp</code> 安装。</p>
+<h3 id="Python-Formatting"><a href="#Python-Formatting" class="headerlink" title="Python Formatting"></a>Python Formatting</h3><p>Formatting makes source code easier to read by human beings. By enforcing particular rules and conventions such as line spacing, indents, and spacing around operators, the code becomes more visually organized and comprehensible.</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/formatting">Formatting Python in Visual Studio Code</a></p>
+<p>利用<strong>null-ls</strong>插件配置，<strong>black</strong>提供支持。</p>
+<p>由于<strong>pyright</strong> 不提供 formatting 功能，所以需要使用 <strong>black</strong>，<strong>black</strong>需要通过 <strong>Mason</strong> 插件安装。</p>
+<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/neovim/comments/13sdxep/how_to_setup_formatter_for_python/">How to setup formatter for Python ??? : r&#x2F;neovim (reddit.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://vi.stackexchange.com/questions/37397/how-to-configure-neovim-to-properly-format-python-code">formatting - How to configure neovim to properly format python code? - Vi and Vim Stack Exchange</a></p>
+<h3 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h3><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/debugging">Debugging configurations for Python apps in Visual Studio Code</a></p>
+<p>利用 <strong>nvim-dap</strong> 插件配置，<strong>debugpy</strong> 提供支持。</p>
+<h3 id="Environments"><a href="#Environments" class="headerlink" title="Environments"></a>Environments</h3><p>An “environment” in Python is the context in which a Python program runs that consists of an interpreter and any number of installed packages.</p>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/environments">Using Python Environments in Visual Studio Code</a></p>
+<p>利用 <strong>nvim-dap</strong> 插件配置，重点是设置 Python 解释器的路径，这里用 Conda 的优势就很明显了。由于 Conda 运行的时候会设置 <strong>CONDA_PREFIX</strong> 环境变量，因此可以直接利用环境变量设置 Python 解释器的路径。</p>
+<h3 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h3><p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/python/testing">Testing Python in Visual Studio Code</a></p>
+<h2 id="Neovim-配置-LaTeX-编辑器"><a href="#Neovim-配置-LaTeX-编辑器" class="headerlink" title="Neovim 配置 LaTeX 编辑器"></a>Neovim 配置 LaTeX 编辑器</h2><p>利用 <strong>VimTeX</strong> 插件</p>
+<p><a target="_blank" rel="noopener" href="https://www.ejmastnak.com/tutorials/vim-latex/intro/">Real-time LaTeX using Vim&#x2F;Neovim, VimTeX, and snippets | ejmastnak</a></p>
+<ul>
+<li>反向搜索</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /c start /min &quot;&quot; nvim --headless -c &quot;VimtexInverseSearch %l &#x27;%f&#x27;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LSP"><a href="#LSP" class="headerlink" title="LSP"></a>LSP</h3><p>利用 <strong>nvim-lspconfig</strong> 配置，<strong>lua_ls</strong> 提供支持。</p>
+<h3 id="LaTeX-Formatting"><a href="#LaTeX-Formatting" class="headerlink" title="LaTeX Formatting"></a>LaTeX Formatting</h3><p>利用 <strong>null-ls</strong> 配置，<strong>latexindent</strong> 提供支持。</p>
+<h2 id="Neovim-Snippets-设置"><a href="#Neovim-Snippets-设置" class="headerlink" title="Neovim Snippets 设置"></a>Neovim Snippets 设置</h2><p>利用 <strong>LuaSnip</strong> 插件来实现。</p>
+<p><a target="_blank" rel="noopener" href="https://www.ejmastnak.com/tutorials/vim-latex/luasnip/">LuaSnip Plugin Guide for LaTeX | Vim and LaTeX Series Part 2 | ejmastnak</a></p>
+<h2 id="遇到的问题与解决方案"><a href="#遇到的问题与解决方案" class="headerlink" title="遇到的问题与解决方案"></a>遇到的问题与解决方案</h2><h3 id="Treesitter-and-LSP-的差别"><a href="#Treesitter-and-LSP-的差别" class="headerlink" title="Treesitter and LSP 的差别"></a>Treesitter and LSP 的差别</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/444836713">Neovim 内置 LSP 配置 (一)：基础配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.pabuisson.com/2022/08/neovim-modern-features-treesitter-and-lsp/">Neovim modern features: treesitter and LSP</a></p>
+<p><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=30664671">What’s the difference between tree-sitter and LSP[0]? They both seem to provide … | Hacker News</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/williamboman/mason-lspconfig.nvim">https://github.com/williamboman/mason-lspconfig.nvim</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/69405029/trying-to-configure-pyls-through-nvim-lspconfig">Trying to Configure pyls through nvim-lspconfig</a></p>
+<p><a target="_blank" rel="noopener" href="https://kuator.github.io/neovim/asdf/pyright/2022/06/20/asdf-pyright-neovim.html">ASDF+Neovim+Pyright</a></p>
+<h3 id="Neovim-在-Windows-Terminal-上出现白边"><a href="#Neovim-在-Windows-Terminal-上出现白边" class="headerlink" title="Neovim 在 Windows Terminal 上出现白边"></a>Neovim 在 Windows Terminal 上出现白边</h3><ul>
+<li>需要调两个控制，一个是 padding，一个是 scrollbarState。</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Terminal -&gt; Settings -&gt; Defaults(Profiles) -&gt; Appearance(Additional settings) -&gt; Window</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>但是调整完了之后在底部还是会有一小部分白边残余，这是因为终端的像素数量不是使用字体的整数倍。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/62578458/vim-nvim-not-filling-windows-terminal">vim&#x2F;nvim not filling windows terminal - Stack Overflow</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/neovim/comments/k6bn9c/empty_space_below_nvim_area/">Empty space below Nvim area : r&#x2F;neovim (reddit.com)</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Neovim 使用经验积累</p><p><a href="https://latexalpha.github.io/4d02fc57ac7e/">https://latexalpha.github.io/4d02fc57ac7e/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-01-11</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Vim/">Vim</a><a class="link-muted mr-2" rel="tag" href="/tags/Neovim/">Neovim</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/ed37cd70b202/"><span class="level-item">VS Code 使用经验积累</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"><span class="level-start"><span class="level-item">软件使用</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/categories/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91/"><span class="level-start"><span class="level-item">项目开发</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Vim-使用基础知识"><span class="level-left"><span class="level-item">Vim 使用基础知识</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Vim-的几种模式"><span class="level-left"><span class="level-item">Vim 的几种模式</span></span></a></li><li><a class="level is-mobile" href="#Vim-移动命令"><span class="level-left"><span class="level-item">Vim 移动命令</span></span></a></li><li><a class="level is-mobile" href="#Vim-查找与替换命令"><span class="level-left"><span class="level-item">Vim 查找与替换命令</span></span></a></li><li><a class="level is-mobile" href="#Vim-正则表达式"><span class="level-left"><span class="level-item">Vim 正则表达式</span></span></a></li><li><a class="level is-mobile" href="#应用实例-：替换-Markdown-文件里失效的-Gitee-图床链接"><span class="level-left"><span class="level-item">应用实例 ：替换 Markdown 文件里失效的 Gitee 图床链接</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Lua-语言基础知识"><span class="level-left"><span class="level-item">Lua 语言基础知识</span></span></a></li><li><a class="level is-mobile" href="#Neovim-基础使用"><span class="level-left"><span class="level-item">Neovim 基础使用</span></span></a></li><li><a class="level is-mobile" href="#Neovim-配置前准备工作"><span class="level-left"><span class="level-item">Neovim 配置前准备工作</span></span></a></li><li><a class="level is-mobile" href="#Neovim-配置主题"><span class="level-left"><span class="level-item">Neovim 配置主题</span></span></a></li><li><a class="level is-mobile" href="#Neovim-配置-Markdown-编辑器"><span class="level-left"><span class="level-item">Neovim 配置 Markdown 编辑器</span></span></a></li><li><a class="level is-mobile" href="#Neovim-配置-Python-开发环境"><span class="level-left"><span class="level-item">Neovim 配置 Python 开发环境</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Autocomplete-and-IntelliSense"><span class="level-left"><span class="level-item">Autocomplete and IntelliSense</span></span></a></li><li><a class="level is-mobile" href="#Linting"><span class="level-left"><span class="level-item">Linting</span></span></a></li><li><a class="level is-mobile" href="#Python-Formatting"><span class="level-left"><span class="level-item">Python Formatting</span></span></a></li><li><a class="level is-mobile" href="#Debugging"><span class="level-left"><span class="level-item">Debugging</span></span></a></li><li><a class="level is-mobile" href="#Environments"><span class="level-left"><span class="level-item">Environments</span></span></a></li><li><a class="level is-mobile" href="#Testing"><span class="level-left"><span class="level-item">Testing</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Neovim-配置-LaTeX-编辑器"><span class="level-left"><span class="level-item">Neovim 配置 LaTeX 编辑器</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#LSP"><span class="level-left"><span class="level-item">LSP</span></span></a></li><li><a class="level is-mobile" href="#LaTeX-Formatting"><span class="level-left"><span class="level-item">LaTeX Formatting</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Neovim-Snippets-设置"><span class="level-left"><span class="level-item">Neovim Snippets 设置</span></span></a></li><li><a class="level is-mobile" href="#遇到的问题与解决方案"><span class="level-left"><span class="level-item">遇到的问题与解决方案</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Treesitter-and-LSP-的差别"><span class="level-left"><span class="level-item">Treesitter and LSP 的差别</span></span></a></li><li><a class="level is-mobile" href="#Neovim-在-Windows-Terminal-上出现白边"><span class="level-left"><span class="level-item">Neovim 在 Windows Terminal 上出现白边</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
