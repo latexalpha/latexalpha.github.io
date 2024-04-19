@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>深度学习概念梳理 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文介绍了深度学习中的一些概念，包括人工智能、机器学习、人工神经网络、深度学习、数据挖掘等，以及它们之间的相互关系。"><meta property="og:type" content="blog"><meta property="og:title" content="深度学习概念梳理"><meta property="og:url" content="https://latexalpha.github.io/596d5cd487fa/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文介绍了深度学习中的一些概念，包括人工智能、机器学习、人工神经网络、深度学习、数据挖掘等，以及它们之间的相互关系。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182046403.png"><meta property="og:image" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182049607.png"><meta property="article:published_time" content="2024-04-17T12:39:23.000Z"><meta property="article:modified_time" content="2024-04-19T03:57:45.363Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="Machine Learning"><meta property="article:tag" content="Deep Learning"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182046403.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/596d5cd487fa/"},"headline":"深度学习概念梳理","image":["https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182046403.png","https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182049607.png"],"datePublished":"2024-04-17T12:39:23.000Z","dateModified":"2024-04-19T03:57:45.363Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文介绍了深度学习中的一些概念，包括人工智能、机器学习、人工神经网络、深度学习、数据挖掘等，以及它们之间的相互关系。"}</script><link rel="canonical" href="https://latexalpha.github.io/596d5cd487fa/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-17T12:39:23.000Z" title="2024/4/17 20:39:23">2024-04-17</time>发表</span><span class="level-item"><time dateTime="2024-04-19T03:57:45.363Z" title="2024/4/19 11:57:45">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">知识学习</a></span><span class="level-item">18 分钟读完 (大约2764个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">深度学习概念梳理</h1><div class="content"><p>本文介绍了深度学习中的一些概念，包括人工智能、机器学习、人工神经网络、深度学习、数据挖掘等，以及它们之间的相互关系。</p>
+<span id="more"></span>
+
+<h2 id="人工智能"><a href="#人工智能" class="headerlink" title="人工智能"></a>人工智能</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E3%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD">人工智能</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Artificial_intelligence">Artificial Intelligence</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/cloud/learn/what-is-artificial-intelligence">Artificial Intelligence -IBM</a></p>
+<p>人工智能（英语：artificial intelligence，缩写为 AI）亦称智械、机器智能，指由人制造出来的机器所表现出来的智能。通常人工智能是指通过普通计算机程序来呈现人类智能的技术。该词也指出研究这样的智能系统是否能够實現，以及如何實現。同时，通过医学、神经科学、机器人学及统计学等的进步，常态预测则认为人类的很多职业也逐渐被其取代。</p>
+<p>人工智能于一般教材中的定义领域是“智能主体（intelligent agent）的研究与设计”，智能主体指一个可以观察周遭环境并作出行动以达致目标的系统。约翰·麦卡锡于 1954 年的定义是“制造智能机器的科学与工程”。安德烈亚斯·卡普兰（Andreas Kaplan）和迈克尔·海恩莱因（Michael Haenlein）将人工智能定义为“系统正确解释外部数据，从这些数据中学习，并利用这些知识通过灵活适应实现特定目标和任务的能力”。</p>
+<hr>
+<h2 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/cloud/learn/machine-learning">Machine Learning -IBM</a></p>
+<p>机器学习是人工智能的一个分支。人工智能的研究历史有着一条从以“推理”为重点，到以“知识”为重点，再到以“学习”为重点的自然、清晰的脉络。显然，机器学习是实现人工智能的一个途径，即以机器学习为手段解决人工智能中的问题。机器学习在近 29 多年已发展为一门多领域交叉学科，涉及概率论、统计学、逼近论、凸分析、计算复杂性理论等多门学科。机器学习理论主要是设计和分析一些让计算机可以自动“学习”的算法。机器学习算法是一类从数据中自动分析获得规律，并利用规律对未知数据进行预测的算法。因为学习算法中涉及了大量的统计学理论，机器学习与推断统计学联系尤为密切，也被称为统计学习理论。算法设计方面，机器学习理论关注可以实现的，行之有效的学习算法。很多推论问题属于无程序可循难度，所以部分的机器学习研究是开发容易处理的近似算法。</p>
+<p>机器学习已广泛应用于数据挖掘、计算机视觉、自然语言处理、生物特征识别、搜索引擎、医学诊断、检测信用卡欺诈、证券市场分析、DNA 序列测序、语音和手写识别、战略游戏和机器人等领域。</p>
+<hr>
+<h2 id="人工神经网络"><a href="#人工神经网络" class="headerlink" title="人工神经网络"></a>人工神经网络</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E3%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C">人工神经网络</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Artificial_neural_network">Artificial Neural Network</a></p>
+<p>人工神经网络（英语：Artificial Neural Network，ANN），简称神经网络（Neural Network，NN）或人工神經网络，在机器学习和认知科学领域，是一种模仿生物神经网络（动物的中枢神经系统，特别是大脑）的结构和功能的数学模型或计算模型，用于对函数进行估计或近似。神经网络由大量的人工神经元联结进行计算。大多数情况下人工神经网络能在外界信息的基础上改变内部结构，是一种自适应系统，通俗地讲就是具备学习功能。现代神经网络是一种非线性统计性数据建模工具，神经网络通常是通过一个基于数学统计学类型的学习方法（Learning Method）得以优化，所以也是数学统计学方法的一种实际应用，通过统计学的标准数学方法我们能够得到大量的可以用函数来表达的局部结构空间，另一方面在人工智能学的人工感知领域，我们通过数学统计学的应用可以来做人工感知方面的决定问题（也就是说通过统计学的方法，人工神经网络能够类似人一样具有简单的决定能力和简单的判断能力），这种方法比起正式的逻辑学推理演算更具有优势。</p>
+<p>和其他机器学习方法一样，神经网络已经被用于解决各种各样的问题，例如机器视觉和语音识别。这些问题都是很难被传统基于规则的编程所解决的。</p>
+<hr>
+<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/%E5%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0">深度学习</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Deep_learning">Deep Learning</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/cloud/learn/deep-learning">Deep Learning -IBM</a></p>
+<p>深度学习（英语：deep learning）是机器学习的分支，是一种以人工神經网络为架构，对资料进行表征学习的算法。</p>
+<p>深度学习是机器学习中一种基于对数据进行表征学习的算法。观测值（例如一幅图像）可以使用多种方式来表示，如每个像素强度值的向量，或者更抽象地表示成一系列边、特定形状的区域等。而使用某些特定的表示方法更容易从实例中学习任务（例如，人脸识别或面部表情识别）。深度学习的好处是用非监督式或半监督式的特征学习和分层特征提取高效算法来替代手工获取特征。</p>
+<p>表征学习的目标是寻求更好的表示方法并创建更好的模型来从大规模未标记数据中学习这些表示方法。表示方法来自神经科学，并松散地创建在类似神经系统中的信息处理和对通信模式的理解上，如神经编码，试图定义拉动神经元的反应之间的关系以及大脑中的神经元的电活动之间的关系。</p>
+<p>至今已有数种深度学习框架，如深度神经网络、卷积神经网络和深度置信网络和循环神经网络已被应用在计算机视觉、语音识别、自然语言处理、音频识别与生物信息学等领域并获取了极好的效果。</p>
+<p>另外，“深度学习”已成为时髦术语，或者说是人工神经网络的品牌重塑。</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98">数据挖掘</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Data_mining">Data Mining</a></p>
+<p>数据挖掘（英语：data mining）是一个跨学科的计算机科学分支。它是用人工智能、机器学习、统计学和数据库的交叉方法在相对较大型的数据集中发现模式的计算过程。</p>
+<p>数据挖掘过程的总体目标是从一个数据集中提取信息，并将其转换成可理解的结构，以进一步使用。除了原始分析步骤，它还涉及到数据库和数据管理方面、数据预处理、模型与推断方面考量、兴趣度度量、复杂度的考虑，以及发现结构、可视化及在线更新等后处理。数据挖掘是“数据库知识发现”（Knowledge-Discovery in Databases, KDD）的分析步骤，本质上属于机器学习的范畴。</p>
+<h2 id="相互关系"><a href="#相互关系" class="headerlink" title="相互关系"></a>相互关系</h2><h3 id="What’s-The-Difference-Between-AI-Machine-Learning-and-Deep-Learning"><a href="#What’s-The-Difference-Between-AI-Machine-Learning-and-Deep-Learning" class="headerlink" title="What’s The Difference Between AI, Machine Learning, and Deep Learning?"></a>What’s The Difference Between AI, Machine Learning, and Deep Learning?</h3><p>AI means getting a computer to mimic human behavior in some way.</p>
+<p>Machine learning is a subset of AI, and it consists of the techniques that enable computers to figure things out from the data and deliver AI applications.</p>
+<p>Deep learning, meanwhile, is a subset of machine learning that enables computers to solve more complex problems.</p>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182046403.png" alt="difference_between_ai__machine_learning_and_deep_learning"></p>
+<p><a target="_blank" rel="noopener" href="https://blogs.oracle.com/bigdata/post/whatx26s-the-difference-between-ai-machine-learning-and-deep-learning">What’s the Difference Between AI, Machine Learning, and Deep Learning?</a></p>
+<h3 id="AI-vs-Machine-Learning-vs-Deep-Learning-vs-Neural-Networks-What’s-the-Difference"><a href="#AI-vs-Machine-Learning-vs-Deep-Learning-vs-Neural-Networks-What’s-the-Difference" class="headerlink" title="AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What’s the Difference?"></a>AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What’s the Difference?</h3><p>Perhaps the easiest way to think about artificial intelligence, machine learning, neural networks, and deep learning is to think of them like Russian nesting dolls. Each is essentially a component of the prior term.</p>
+<p><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401182049607.png" alt="Russian Nesting Dolls"></p>
+<p><a target="_blank" rel="noopener" href="https://www.kaggle.com/discussions/getting-started/410470">AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: A easy way for differentiation | Kaggle</a></p>
+<p>Artificial Intelligence</p>
+<p>That is, machine learning is a subfield of artificial intelligence. Deep learning is a subfield of machine learning, and neural networks make up the backbone of deep learning algorithms. In fact, it is the number of node layers, or depth, of neural networks that distinguishes a single neural network from a deep learning algorithm, which must have more than three.</p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/cloud/blog/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks">AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What’s the Difference?</a></p>
+<h3 id="Data-Mining-Vs-Machine-Learning-What-Is-the-Difference"><a href="#Data-Mining-Vs-Machine-Learning-What-Is-the-Difference" class="headerlink" title="Data Mining Vs. Machine Learning: What Is the Difference?"></a>Data Mining Vs. Machine Learning: What Is the Difference?</h3><p><strong>What is Data Mining?</strong></p>
+<p>Data mining is considered the process of extracting useful information from a vast amount of data. It’s used to discover new, accurate, and useful patterns in the data, looking for meaning and relevant information for the organization or individual who needs it. It’s a tool used by humans.</p>
+<p><strong>What is Machine Learning?</strong></p>
+<p>On the other hand, machine learning is the process of discovering algorithms that have improved courtesy of experience derived from data. It’s the design, study, and development of algorithms that permit machines to learn without human intervention. It’s a tool to make machines smarter, eliminating the human element (but not eliminating humans themselves; that would be wrong).</p>
+<p><strong>Difference Between Data mining and Machine learning:</strong></p>
+<p>Data mining is the subset of business analytics, it is similar to experimental research. The origins of data mining are databases, statistics. Whereas machine learning involves the algorithm that improves automatically through experience based on data.</p>
+<p><a target="_blank" rel="noopener" href="https://www.simplilearn.com/data-mining-vs-machine-learning-article">Data Mining Vs. Machine Learning: What Is the Difference?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.educba.com/data-mining-vs-machine-learning/">Data Mining vs Machine Learning</a></p>
+<h3 id="What’s-More"><a href="#What’s-More" class="headerlink" title="What’s More?"></a>What’s More?</h3><p>The main difference between regression and a neural network is the impact of change on a single weight. In regression, you can change a weight without affecting the other inputs in a function. However, this isn’t the case with neural networks. Since the output of one layer is passed into the next layer of the network, a single change can have a cascading effect on the other neurons in the network.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>深度学习概念梳理</p><p><a href="https://latexalpha.github.io/596d5cd487fa/">https://latexalpha.github.io/596d5cd487fa/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-04-17</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Machine-Learning/">Machine Learning</a><a class="link-muted mr-2" rel="tag" href="/tags/Deep-Learning/">Deep Learning</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/7850b1fc6596/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">深度学习基础知识</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/616f0cecb55e/"><span class="level-item">机器学习算法</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#人工智能"><span class="level-left"><span class="level-item">人工智能</span></span></a></li><li><a class="level is-mobile" href="#机器学习"><span class="level-left"><span class="level-item">机器学习</span></span></a></li><li><a class="level is-mobile" href="#人工神经网络"><span class="level-left"><span class="level-item">人工神经网络</span></span></a></li><li><a class="level is-mobile" href="#深度学习"><span class="level-left"><span class="level-item">深度学习</span></span></a></li><li><a class="level is-mobile" href="#相互关系"><span class="level-left"><span class="level-item">相互关系</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#What’s-The-Difference-Between-AI-Machine-Learning-and-Deep-Learning"><span class="level-left"><span class="level-item">What’s The Difference Between AI, Machine Learning, and Deep Learning?</span></span></a></li><li><a class="level is-mobile" href="#AI-vs-Machine-Learning-vs-Deep-Learning-vs-Neural-Networks-What’s-the-Difference"><span class="level-left"><span class="level-item">AI vs. Machine Learning vs. Deep Learning vs. Neural Networks: What’s the Difference?</span></span></a></li><li><a class="level is-mobile" href="#Data-Mining-Vs-Machine-Learning-What-Is-the-Difference"><span class="level-left"><span class="level-item">Data Mining Vs. Machine Learning: What Is the Difference?</span></span></a></li><li><a class="level is-mobile" href="#What’s-More"><span class="level-left"><span class="level-item">What’s More?</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

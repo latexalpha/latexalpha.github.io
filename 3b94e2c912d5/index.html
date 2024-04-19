@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>ANSYS 有限元仿真学习 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文首先介绍了 ANSYS 产品组件，然后介绍了 Workbench 和 APDL 仿真流程，最后列举了一些 APDL 仿真经验积累。"><meta property="og:type" content="blog"><meta property="og:title" content="ANSYS 有限元仿真学习"><meta property="og:url" content="https://latexalpha.github.io/3b94e2c912d5/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文首先介绍了 ANSYS 产品组件，然后介绍了 Workbench 和 APDL 仿真流程，最后列举了一些 APDL 仿真经验积累。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://latexalpha.github.io/img/og_image.png"><meta property="article:published_time" content="2023-01-20T03:39:41.000Z"><meta property="article:modified_time" content="2024-04-19T04:03:20.294Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="ANSYS"><meta property="article:tag" content="FEM"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://latexalpha.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/3b94e2c912d5/"},"headline":"ANSYS 有限元仿真学习","image":["https://latexalpha.github.io/img/og_image.png"],"datePublished":"2023-01-20T03:39:41.000Z","dateModified":"2024-04-19T04:03:20.294Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文首先介绍了 ANSYS 产品组件，然后介绍了 Workbench 和 APDL 仿真流程，最后列举了一些 APDL 仿真经验积累。"}</script><link rel="canonical" href="https://latexalpha.github.io/3b94e2c912d5/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-01-20T03:39:41.000Z" title="2023/1/20 11:39:41">2023-01-20</time>发表</span><span class="level-item"><time dateTime="2024-04-19T04:03:20.294Z" title="2024/4/19 12:03:20">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/">经验积累</a></span><span class="level-item">5 分钟读完 (大约781个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">ANSYS 有限元仿真学习</h1><div class="content"><p>本文首先介绍了 ANSYS 产品组件，然后介绍了 Workbench 和 APDL 仿真流程，最后列举了一些 APDL 仿真经验积累。</p>
+<span id="more"></span>
+
+<h2 id="ANSYS-产品组件介绍"><a href="#ANSYS-产品组件介绍" class="headerlink" title="ANSYS 产品组件介绍"></a>ANSYS 产品组件介绍</h2><p><a target="_blank" rel="noopener" href="https://www.ansys.com/blog/ansys-gets-into-open-source-with-github">Ansys Gets Into Open Source With GitHub | Ansys</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.pyansys.com/dev/index.html">PyAnsys — PyAnsys</a></p>
+<h3 id="Ansys-Mechanical"><a href="#Ansys-Mechanical" class="headerlink" title="Ansys Mechanical"></a>Ansys Mechanical</h3><p>Ansys Mechanical enables you to solve complex structural engineering problems and make better, faster design decisions. With the finite element analysis (FEA) solvers available in the suite, you can customize and automate solutions for your structural mechanics problems and parameterize them to analyze multiple design scenarios. Ansys Mechanical is a **<br>dynamic tool that has a complete range of analysis tools.</p>
+<p><a target="_blank" rel="noopener" href="https://www.ansys.com/products/structures/ansys-mechanical">Ansys Mechanical | Structural FEA Analysis Software</a></p>
+<h3 id="Ansys-Parametric-Design-Language-APDL"><a href="#Ansys-Parametric-Design-Language-APDL" class="headerlink" title="Ansys Parametric Design Language (APDL)"></a>Ansys Parametric Design Language (APDL)</h3><p>Ansys Parametric Design Language (APDL) is a powerful structured scripting language used to interact with the <a target="_blank" rel="noopener" href="https://www.ansys.com/products/structures/ansys-mechanical">Ansys Mechanical</a> solver. Mechanical APDL (MAPDL), a finite element analysis program, is driven by APDL. APDL and MAPDL can be used for many tasks, ranging from creating geometries for analysis to setting up sophisticated solver settings for highly complex analyses. Ansys was the first commercial simulation tool provider to offer users a versatile programming language to create parametric models for systemic analyses.</p>
+<p><a target="_blank" rel="noopener" href="https://www.ansys.com/blog/what-is-apdl">What is APDL? Ansys Parametric Design Language</a></p>
+<h3 id="Ansys-LS-DYNA"><a href="#Ansys-LS-DYNA" class="headerlink" title="Ansys LS-DYNA"></a>Ansys LS-DYNA</h3><p>Ansys LS-DYNA is the most used explicit simulation program in the world and is capable of simulating the response of materials to short periods of severe loading. Its many elements, contact formulations, material models and other controls can be used to simulate complex models with control over all the details of the problem.</p>
+<p><a target="_blank" rel="noopener" href="https://www.ansys.com/products/structures/ansys-ls-dyna">Ansys LS-DYNA | Crash Simulation Software</a></p>
+<h2 id="Workbench-Tutorials"><a href="#Workbench-Tutorials" class="headerlink" title="Workbench Tutorials"></a>Workbench Tutorials</h2><ul>
+<li>Pre-analysis: before we start the simulation</li>
+<li>Analysis</li>
+<li>Post-analysis: before we leave the tool</li>
+</ul>
+<p>接触面类型：Target169(硬)&#x2F;contact171(软)</p>
+<h3 id="Workbench-分析流程"><a href="#Workbench-分析流程" class="headerlink" title="Workbench 分析流程"></a>Workbench 分析流程</h3><ol>
+<li>分析类型选取</li>
+<li>材料选择和添加</li>
+<li>模型建立及导入</li>
+<li>网格划分</li>
+<li>边界条件的设定</li>
+<li>载荷施加</li>
+<li>求解及后处理</li>
+</ol>
+<h3 id="Basic-Procedure-for-Finite-Element-Analysis"><a href="#Basic-Procedure-for-Finite-Element-Analysis" class="headerlink" title="Basic Procedure for Finite Element Analysis"></a>Basic Procedure for Finite Element Analysis</h3><ul>
+<li>&#x2F;PREP7<ul>
+<li>Define the solid model geometry</li>
+<li>Select the element types</li>
+<li>Define the material properties</li>
+<li>Mesh</li>
+</ul>
+</li>
+<li>&#x2F;SOLU<ul>
+<li>Define the boundary conditions</li>
+<li>Define the loads</li>
+<li>Set the solution options</li>
+<li>Solve</li>
+</ul>
+</li>
+<li>&#x2F;POST1<ul>
+<li>Plot, view, and export the results</li>
+<li>Compare and verify the results</li>
+</ul>
+</li>
+</ul>
+<h3 id="Ansys-Mechanical-Courses"><a href="#Ansys-Mechanical-Courses" class="headerlink" title="Ansys Mechanical Courses"></a>Ansys Mechanical Courses</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/academic/learning-resources">Ansys Academic Support | Tutorials &amp; Training Materials</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/training-center/course-catalog/structures/ansys-mechanical-getting-started">Ansys Mechanical Getting Started | Ansys Training</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/training-center/course-catalog/structures/ansys-mechanical-linear-and-nonlinear-dynamics">Ansys Mechanical Linear and Nonlinear Dynamics | Ansys Training</a></li>
+</ul>
+<h2 id="APDL-Tutorials"><a href="#APDL-Tutorials" class="headerlink" title="APDL Tutorials"></a>APDL Tutorials</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/training-center/course-catalog/structures/introduction-to-ansys-mechanical-apdl">Introduction to Ansys Mechanical APDL | Ansys Training</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/training-center/course-catalog/structures/introduction-to-ansys-mechanical-apdl-scripting">Introduction to Ansys Mechanical APDL Scripting | Ansys Training</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ansys.com/training-center/course-catalog/structures/ansys-mechanical-advanced-use-of-mapdl-in-mechanical">Ansys Mechanical Advanced - Use of MAPDL in Mechanical | Ansys Training</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.padtinc.com/2011/12/07/manipulating-text-strings-in-ansys-mechanical-apdl/">Manipulating Text Strings in ANSYS Mechanical APDL - PADT</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Hulunbuir/article/details/106314787">ANSYS 有限元分析 接触分析_Hulunbuir 的博客-CSDN 博客_hulunbuir ansys</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_thry/thy_el174.html">13.174. CONTA174 - 3-D 8-Node Surface-to-Surface Contact</a></li>
+</ul>
+<h2 id="APDL-仿真经验积累"><a href="#APDL-仿真经验积累" class="headerlink" title="APDL 仿真经验积累"></a>APDL 仿真经验积累</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_cmd/Hlp_C_CmdTOC.html">Mechanical APDL Command Reference (bme.hu)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.adina.com/meshing/mapmesh.shtml">Mapped Meshing (adina.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/ANSYS/comments/llsc6a/ansys_apdl_warning/">ANSYS APDL Warning: r&#x2F;ANSYS (reddit.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://faqs.tips/post/ansys-warning-x27both-solid-model-and-finite-element-model-boundary-conditions-have-been-applied-to-this-model.html">Ansys Warning: Both solid model and finite element model boundary conditions have been applied to this model ? - FAQS.TIPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.researchgate.net/post/Having_trouble_using_the_VWRITE_command_in_APDL_Can_someone_help_me">Having trouble using the *VWRITE command in APDL. Can someone help me? | ResearchGate</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>ANSYS 有限元仿真学习</p><p><a href="https://latexalpha.github.io/3b94e2c912d5/">https://latexalpha.github.io/3b94e2c912d5/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2023-01-20</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/ANSYS/">ANSYS</a><a class="link-muted mr-2" rel="tag" href="/tags/FEM/">FEM</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/774556e2f7fc/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Git 和 GitHub 使用经验积累</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/597f0371d019/"><span class="level-item">MATLAB 使用经验积累</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#ANSYS-产品组件介绍"><span class="level-left"><span class="level-item">ANSYS 产品组件介绍</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Ansys-Mechanical"><span class="level-left"><span class="level-item">Ansys Mechanical</span></span></a></li><li><a class="level is-mobile" href="#Ansys-Parametric-Design-Language-APDL"><span class="level-left"><span class="level-item">Ansys Parametric Design Language (APDL)</span></span></a></li><li><a class="level is-mobile" href="#Ansys-LS-DYNA"><span class="level-left"><span class="level-item">Ansys LS-DYNA</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Workbench-Tutorials"><span class="level-left"><span class="level-item">Workbench Tutorials</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Workbench-分析流程"><span class="level-left"><span class="level-item">Workbench 分析流程</span></span></a></li><li><a class="level is-mobile" href="#Basic-Procedure-for-Finite-Element-Analysis"><span class="level-left"><span class="level-item">Basic Procedure for Finite Element Analysis</span></span></a></li><li><a class="level is-mobile" href="#Ansys-Mechanical-Courses"><span class="level-left"><span class="level-item">Ansys Mechanical Courses</span></span></a></li></ul></li><li><a class="level is-mobile" href="#APDL-Tutorials"><span class="level-left"><span class="level-item">APDL Tutorials</span></span></a></li><li><a class="level is-mobile" href="#APDL-仿真经验积累"><span class="level-left"><span class="level-item">APDL 仿真经验积累</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

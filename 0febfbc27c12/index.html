@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>信号处理基本概念及经典方法 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要介绍了信号处理的一些基本概念，包括信号处理领域的缩写词一览表、信号处理领域一些常见概念、经典信号处理方法等。"><meta property="og:type" content="blog"><meta property="og:title" content="信号处理基本概念及经典方法"><meta property="og:url" content="https://latexalpha.github.io/0febfbc27c12/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要介绍了信号处理的一些基本概念，包括信号处理领域的缩写词一览表、信号处理领域一些常见概念、经典信号处理方法等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://latexalpha.github.io/img/og_image.png"><meta property="article:published_time" content="2021-03-01T06:37:54.000Z"><meta property="article:modified_time" content="2024-04-19T03:59:45.420Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="DSP"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://latexalpha.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/0febfbc27c12/"},"headline":"信号处理基本概念及经典方法","image":["https://latexalpha.github.io/img/og_image.png"],"datePublished":"2021-03-01T06:37:54.000Z","dateModified":"2024-04-19T03:59:45.420Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要介绍了信号处理的一些基本概念，包括信号处理领域的缩写词一览表、信号处理领域一些常见概念、经典信号处理方法等。"}</script><link rel="canonical" href="https://latexalpha.github.io/0febfbc27c12/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-01T06:37:54.000Z" title="2021/3/1 14:37:54">2021-03-01</time>发表</span><span class="level-item"><time dateTime="2024-04-19T03:59:45.420Z" title="2024/4/19 11:59:45">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">知识学习</a></span><span class="level-item">30 分钟读完 (大约4520个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">信号处理基本概念及经典方法</h1><div class="content"><p>本文主要介绍了信号处理的一些基本概念，包括信号处理领域的缩写词一览表、信号处理领域一些常见概念、经典信号处理方法等。</p>
+<span id="more"></span>
+
+<h2 id="信号处理领域缩写词一览表"><a href="#信号处理领域缩写词一览表" class="headerlink" title="信号处理领域缩写词一览表"></a>信号处理领域缩写词一览表</h2><table>
+<thead>
+<tr>
+<th>缩写词</th>
+<th>全拼</th>
+<th>中文译名</th>
+<th>缩写词</th>
+<th>全拼</th>
+<th>中文译名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FT</td>
+<td>Fourier Transform</td>
+<td>傅里叶变换</td>
+<td>IFD</td>
+<td>Iterative Filtering Decomposition</td>
+<td>迭代滤波分解</td>
+</tr>
+<tr>
+<td>DTFT</td>
+<td>Discrete-time Fourier Transform</td>
+<td>离散时间傅里叶变换</td>
+<td>IO</td>
+<td>Index of Orthogonality</td>
+<td>正交性指标</td>
+</tr>
+<tr>
+<td>DFT</td>
+<td>Discrete Fourier Transform</td>
+<td>离散傅里叶变换</td>
+<td>ITD</td>
+<td>Intrinsic Time-Scale Decomposition</td>
+<td>本征时间尺度分解</td>
+</tr>
+<tr>
+<td>FFT</td>
+<td>fast Fourier transform</td>
+<td>快速傅里叶变换</td>
+<td>LMD</td>
+<td>Local Mean Decomposition</td>
+<td>局部均值分解</td>
+</tr>
+<tr>
+<td>STFT</td>
+<td>Short-time Fourier Transform</td>
+<td>短时傅里叶变换</td>
+<td>MP</td>
+<td>Matching Pursuit</td>
+<td>匹配追踪</td>
+</tr>
+<tr>
+<td>WT</td>
+<td>Wavelet Transform</td>
+<td>小波变换</td>
+<td>NMD</td>
+<td>Nonlinear Mode Decomposition</td>
+<td>非线性模式分解</td>
+</tr>
+<tr>
+<td>HT</td>
+<td>Hilbert Transform</td>
+<td>希尔伯特变换</td>
+<td>NFM</td>
+<td>Nonlinear Frequency Modulation</td>
+<td>非线性调频</td>
+</tr>
+<tr>
+<td>HHT</td>
+<td>Hilbert-Huang Transform</td>
+<td>希尔伯特黄变换</td>
+<td>NFMC</td>
+<td>Nonlinear Frequency Modulated Component</td>
+<td>非线性调频分量</td>
+</tr>
+<tr>
+<td>EMD</td>
+<td>Empirical Mode Decomposition</td>
+<td>经验模态分解</td>
+<td>PNFMCD</td>
+<td>Parameterized Nonlinear Frequency Modulated Component Decomposition</td>
+<td>非线性调频分量参数化分解</td>
+</tr>
+<tr>
+<td>IMF</td>
+<td>Intrinsic Mode Function</td>
+<td>固有模态函数</td>
+<td>RE</td>
+<td>Relative Error</td>
+<td>相对误差</td>
+</tr>
+<tr>
+<td>ADMM</td>
+<td>Alternating Direction Method of Multipliers</td>
+<td>交替方向乘子法</td>
+<td>SI</td>
+<td>Separation Index</td>
+<td>分离指标</td>
+</tr>
+<tr>
+<td>AM</td>
+<td>Amplitude Modulation</td>
+<td>幅值调制（调幅）</td>
+<td>SM</td>
+<td>S Method</td>
+<td>S 方法</td>
+</tr>
+<tr>
+<td>ANFMCP</td>
+<td>Adaptive Nonlinear Frequency Modulated Component Pursuit</td>
+<td>自适应非线性调频分量追踪</td>
+<td>SNR</td>
+<td>Signal-to-Noise Ratio</td>
+<td>信噪比</td>
+</tr>
+<tr>
+<td>BP</td>
+<td>Basis Pursuit</td>
+<td>基追踪</td>
+<td>SST</td>
+<td>Synchrosqueezing Transform</td>
+<td>同步压缩变换</td>
+</tr>
+<tr>
+<td>BT</td>
+<td>Block Thresholding</td>
+<td>分块阈值法</td>
+<td>SST 2</td>
+<td>Second-Order Synchrosqueezing Transform</td>
+<td>二阶同步压缩变换</td>
+</tr>
+<tr>
+<td>De-SST 2</td>
+<td>Demodulated Second-Order Synchrosqueezing Transform</td>
+<td>解调二阶同步压缩变换</td>
+<td>SVD</td>
+<td>Singular Value Decomposition</td>
+<td>奇异值分解</td>
+</tr>
+<tr>
+<td>DWT</td>
+<td>Discrete Wavelet Transform</td>
+<td>离散小波变换</td>
+<td>TVF-EMD</td>
+<td>Time-Varying Filtering Based Empirical Mode Decomposition</td>
+<td>基于时变滤波的经验模式分解</td>
+</tr>
+<tr>
+<td>ECG</td>
+<td>Electrocardiogram</td>
+<td>心电图</td>
+<td>VMD</td>
+<td>Variational Mode Decomposition</td>
+<td>变分模式分解</td>
+</tr>
+<tr>
+<td>EEMD</td>
+<td>Ensemble Empirical Mode Decomposition</td>
+<td>总体经验模式分解</td>
+<td>VNFMCD</td>
+<td>Variational Nonlinear Frequency Modulated Component Decomposition</td>
+<td>变分非线性调频分量分解</td>
+</tr>
+<tr>
+<td>EMG</td>
+<td>Electromyogram</td>
+<td>肌电图</td>
+<td>WPT</td>
+<td>Wavelet Packet Transform</td>
+<td>小波包变换</td>
+</tr>
+<tr>
+<td>EVD</td>
+<td>Eigenvalue Decomposition</td>
+<td>特征值分解</td>
+<td>WD</td>
+<td>Wigner Distribution</td>
+<td>魏格纳分布</td>
+</tr>
+<tr>
+<td>EWT</td>
+<td>Empirical Wavelet Transform</td>
+<td>经验小波变换</td>
+<td>DWT</td>
+<td>Discrete Wavelet Transform</td>
+<td>离散小波分析</td>
+</tr>
+<tr>
+<td>FM</td>
+<td>Empirical Wavelet Transform</td>
+<td>频率调制（调频）</td>
+<td>TFR</td>
+<td>Time-Frequency Representation</td>
+<td>时频表示</td>
+</tr>
+<tr>
+<td>HVD</td>
+<td>Hilbert Vibration Decomposition</td>
+<td>希尔伯特振动分解</td>
+<td>m-D</td>
+<td>Micro Doppler</td>
+<td>微多普勒</td>
+</tr>
+<tr>
+<td>IMF</td>
+<td>Intrinsic Mode Function</td>
+<td>本征模态分解</td>
+<td>LFM</td>
+<td>Linear Frequency Modulation</td>
+<td>线性调频信号</td>
+</tr>
+</tbody></table>
+<h2 id="信号处理领域一些常见概念"><a href="#信号处理领域一些常见概念" class="headerlink" title="信号处理领域一些常见概念"></a>信号处理领域一些常见概念</h2><h3 id="信噪比（Signal-to-noise-ratio）"><a href="#信噪比（Signal-to-noise-ratio）" class="headerlink" title="信噪比（Signal-to-noise ratio）"></a>信噪比（Signal-to-noise ratio）</h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Signal-to-noise_ratio">Signal-to-noise ratio-Wikipedia</a></p>
+<h3 id="Lamb-波"><a href="#Lamb-波" class="headerlink" title="Lamb 波"></a>Lamb 波</h3><p>考虑地球旋转作用，在静力平衡大气中还可以产生一种只沿水平方向传播的特殊声波，称为兰姆波。其特点是：空气微团只做水平运动，静力平衡成立，水平尺度较大。兰姆波的相速大于绝热声速，是快波型波动。它与纯水平声波不同的是，它是频散波。</p>
+<ul>
+<li><strong>频散波</strong> 若相速不仅依赖于介质的物理性质，还依赖于波数，这种波称为频散波。若相速仅依赖于介质的物理性质，不依赖于波数，这种波称为非频散波，并称介质为非频散介质。如果相速度 c 和波数 k 无关，dc&#x2F;dk&#x3D;0，则群速度 Cg&#x3D;c, 说明在波的传播过程中, 能量始终聚集在波内而不被分散；反之, 如果 c 和 k 有关, dc&#x2F;dk≠0，则 cg≠c，说明能量随波的传播而被分散，这种现象称为能量频散，并称这种波为频散波（色散波）。</li>
+<li><strong>导波</strong> 有一个或两个方向的尺寸比较小的弹性体 (如长杆、薄板、薄壳等)内的行波。这类弹性体称为波导。在波导中导波受波导侧表面制约, 被引导沿着波导伸展的方向传播。导波一般为频散波, 可以具有多种模式, 每种模式的振幅在波面上有特定的分布形式, 波数与频率之间有特定的函数关系。</li>
+</ul>
+<h3 id="线性调频信号"><a href="#线性调频信号" class="headerlink" title="线性调频信号"></a>线性调频信号</h3><p>线性调频（LFM：Linear Frequency Modulation）信号是指瞬时频率随时间成线性变化的信号。（设振幅归一化，初始相位为零）。线性调频信号也称为鸟声（Chirp）信号，因为其频谱带宽落于可听范围，听着像鸟声，所以又称 Chirp 扩展频谱（CSS）技术。LFM 技术在雷达、声纳技术中有广泛应用，例如，在雷达定位技术中，它可用来增大射频脉冲宽度、加大通信距离、提高平均发射功率，同时又保持足够的信号频谱宽度，不降低雷达的距离分辨率。</p>
+<h3 id="平稳信号与非平稳信号"><a href="#平稳信号与非平稳信号" class="headerlink" title="平稳信号与非平稳信号"></a>平稳信号与非平稳信号</h3><p>The difference between stationary and non-stationary signals:</p>
+<p>The difficulties encountered when analyzing non-stationary signals:</p>
+<ul>
+<li>非平稳信号</li>
+</ul>
+<p>信号的统计特征随时间变化的信号，非平稳信号的瞬时频率常常随时间变化。</p>
+<h3 id="脊线"><a href="#脊线" class="headerlink" title="脊线"></a>脊线</h3><p>由于信号是由几个主要的分量叠加而成的，一般来说每个信号分量都对应着一条比较突出的脊线，各个信号分量频率的主要参数均可以从各自对应的脊线信息中提取出来。</p>
+<blockquote>
+<p>引用自文献：柏林, 刘小峰, 秦树人. 基于时频脊线的瞬时频率特征提取[J]. 机械工程学报, 2008, 44 (10): 222-227. 这篇文章里的第一篇参考文献有必要去看一遍：Carmona, Rene, A, et al. Multiridge Detection and Time-Frequency Reconstruction.[J]. IEEE Transactions on Signal Processing, 1999, 47 (2): 480-480.</p>
+</blockquote>
+<h3 id="功率谱"><a href="#功率谱" class="headerlink" title="功率谱"></a>功率谱</h3><p>功率谱的概念是建立在过程平稳性的基础上, 当过程失去平稳性时, 功率谱也就失去了意义。</p>
+<h3 id="随机振动"><a href="#随机振动" class="headerlink" title="随机振动"></a>随机振动</h3><p>Random Vibration，确定系统在随机激励下的响应问题。</p>
+<p>振动研究总是在模型化的基础上进行的 → 随机微分方程的求解</p>
+<p>平稳随机过程 X 的统计特性中最重要的是相关函数 <em>Rx</em>(<em>τ</em>)与功率谱密度 <em>Sx</em>(<em>ω</em>)，二者的关系如下：</p>
+<p>$$<br>R_x (\tau)&#x3D;\int_{-\infty}^{\infty} e^{j \omega \tau} d \omega<br>$$</p>
+<p>$$<br>S_x (\omega) &#x3D; \frac{1}{2 \pi}\int_{-\infty}^{\infty}e^{-j \omega \tau}d \tau<br>$$</p>
+<p>功率谱的概念是建立在过程平稳性的基础上的，当过程失去平稳性时，功率谱也就失去了意义。</p>
+<h3 id="线性系统与非线性系统"><a href="#线性系统与非线性系统" class="headerlink" title="线性系统与非线性系统"></a>线性系统与非线性系统</h3><p>如果从系统状态空间表达式来观察，线性系统和非线性系统最明显的区别方式就是线性系统符合叠加原理，而非线性系统不然。换句话说线性系统只有状态变量的一次项。高次、三角函数以及常数项都没有，只要有任意一个非线性环节就是非线性系统。</p>
+<h3 id="幅值调制、频率调制和相位调制"><a href="#幅值调制、频率调制和相位调制" class="headerlink" title="幅值调制、频率调制和相位调制"></a>幅值调制、频率调制和相位调制</h3><p>Message signal is used to modulating the carrier. 信号的调制可以分为：</p>
+<ul>
+<li><p>幅值调制</p>
+</li>
+<li><p>角调制</p>
+<ul>
+<li>频率调制</li>
+<li>相位调制</li>
+</ul>
+</li>
+<li><p>幅值调制：振幅调变也可简称为调幅，AM（AmplitudeModulation），通过改变输出信号的振幅，来实现传送信息的目的。一般在调制端输出的高频信号的幅度变化与原始信号成一定的函数关系，在解调端进行解调并输出原始信号。</p>
+</li>
+<li><p>频率调制：频率调制是一种以载波的瞬时频率变化来表示信息的调制方式，通过利用载波的不同频率来表达不同的信息。所谓频率调制，顾名思义，就是对无线电进行信息加载，得到调制波。但是，随着无线电技术的另一个领域，既雷达设备，由于对目标测绘的需要，和电子信息对抗的必要。现代先进雷达已经能通过这种技术来减少杂波，抑或通过将一个集中的雷达脉冲波束散射，达到不被发现的功能，成为低截获概率技术（电子侦察系统会查找狭小波段范围内的电磁波，如果不这样，将会被无穷的背景电磁辐射扰乱）。</p>
+</li>
+<li><p>相位调制：相位调制或称调制：载波的相位对其参考相位的偏离值随调制信号的瞬时值成比例变化的调制方式相。调相和调频有密切的关系。调相时，同时有调频伴随发生；调频时，也同时有调相伴随发生，不过两者的变化规律不同。实际使用时很少采用调相制，它主要是用来作为得到调频的一种方法。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.elecfans.com/d/1009299.html">信号调制的三种方法</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Amplitude_modulation">Wikipedia: Amplitude modulation</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Frequency_modulation">Wikipedia: Frequency modulation</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Phase_modulation">Wikipedia: Phase modulation</a></p>
+</li>
+</ul>
+<p>由频率调制和相位调制的原理对比可知，在考虑瞬时频率的时候，二者之间是没有区别的，都可以表示为：$\phi (t) &#x3D; \phi_0 + 2 \pi \int_{0}^{t} f(\tau) d \tau$</p>
+<h3 id="边带"><a href="#边带" class="headerlink" title="边带"></a>边带</h3><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BE%B9%E5%B8%A6">边带</a></p>
+<p>在无线电通信中，边带 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Sideband">sideband</a> 是比载波频率更高或更低的频率带，所含功率为调制的结果。边带由载波外的调制信号的所有傅里叶分析组成。所有形式的调制都产生边带。</p>
+<h2 id="经典信号处理方法"><a href="#经典信号处理方法" class="headerlink" title="经典信号处理方法"></a>经典信号处理方法</h2><h3 id="傅里叶变换-Fourier-Transform"><a href="#傅里叶变换-Fourier-Transform" class="headerlink" title="傅里叶变换 Fourier Transform"></a>傅里叶变换 Fourier Transform</h3><p>建立了时域信号及其频域表示之间的桥梁，从而反映了信号时域和频域的全局特征，但是无法反映信号的局部特征。</p>
+<h3 id="短时傅里叶变换-Short-Time-Fourier-Transform"><a href="#短时傅里叶变换-Short-Time-Fourier-Transform" class="headerlink" title="短时傅里叶变换 Short Time Fourier Transform"></a>短时傅里叶变换 Short Time Fourier Transform</h3><p>本质上是对信号进行加窗傅里叶变换，但是由于采用的是固定窗，所以时频分辨率固定不变，高频段和低频段的分辨率相同。</p>
+<p>从傅里叶变换到短时傅里叶变换</p>
+<h3 id="小波变换-Wavelet-Transform"><a href="#小波变换-Wavelet-Transform" class="headerlink" title="小波变换 Wavelet Transform"></a>小波变换 Wavelet Transform</h3><p>对信号进行加窗傅里叶变换，采用可变窗，分析低频分量时，窗口较宽，而分析高频分量时，窗口较窄。对低频分量，可取得较好的频域分辨率和较差的时域分辨率；但对高频分量，则恰好相反。小波变换分成两个大类：离散小波变换 (DWT) 和连续小波转换 (CWT)。两者的主要区别在于，连续变换在所有可能的缩放和平移上操作，而离散变换采用所有缩放和平移值的特定子集。</p>
+<p>小波变换的定义：</p>
+<p>$$<br>W_x(a,b) &#x3D; \langle x(t),\psi_{a,b}(t) \rangle &#x3D; \int_{-\infty}^{\infty}x(t)\psi_{a,b}^\star (t) dt<br>$$</p>
+<p>with $a&gt;0, \psi_{a,b}(t)&#x3D;a^{-1&#x2F;2}\psi(\frac{t-b}{a}), \psi(t)$ 称为母小波。$\int_{-\infty}^{\infty} \psi(t)dt &#x3D;0$.</p>
+<p>小波容许条件，小波紧支撑性。</p>
+<ul>
+<li>连续小波变换</li>
+</ul>
+<p>变分辨率带通滤波，适用于分析局部奇异性信号。</p>
+<ul>
+<li>离散小波变换</li>
+</ul>
+<h3 id="线性调频小波变换"><a href="#线性调频小波变换" class="headerlink" title="线性调频小波变换"></a>线性调频小波变换</h3><p>是典型的参数化时频方法，其本质是在时频面上用一条任意斜率的直线表示任意一条能量曲线，故它适合分析线性调频单&#x2F;多分量信号，但由于采用线性变换核，线性调频小波变换不适合分析非线性调频信号。</p>
+<h3 id="Wigner-Ville-分布-Wigner-Ville-Distribution"><a href="#Wigner-Ville-分布-Wigner-Ville-Distribution" class="headerlink" title="Wigner-Ville 分布 Wigner-Ville Distribution"></a>Wigner-Ville 分布 Wigner-Ville Distribution</h3><p><strong>Wigner-Ville 分布（WVD）</strong>：是典型的二次型变换，它定义为信号瞬时相关函数的傅立叶变换。由于在计算中不加窗操作，它避免了时域分辨率和频域分辨率之间的相互牵制。对于多分量信号会带来交叉项，因此适于分析单分量信号。</p>
+<h3 id="经验模态分解-Empirical-Mode-Decomposition-EMD"><a href="#经验模态分解-Empirical-Mode-Decomposition-EMD" class="headerlink" title="经验模态分解 Empirical Mode Decomposition, EMD"></a>经验模态分解 Empirical Mode Decomposition, EMD</h3><p>提出者和提出时间：Norden E. Huang，1998 年</p>
+<p>特点：是一种新的信号时频分析方法，非常适合处理非线性、非平稳信号，它基于信号的局部特征时间尺度，将复杂的信号分解为有限的本征模函数（IMF）之和，每一个 IMF 所包含的频率成分不仅与分析频率有关，而且随信号本身的变化而变化，具有自适应的特点，具有很高的信噪比。Hilbert 变换可以求出每一个 IMF 随时间变化的瞬时频率和瞬时幅值，揭示信号的内在特征。Hilbert 谱表示信号完整的时频分布，使得信号的瞬时频率具有了物理意义。</p>
+<h3 id="Ensemble-Empirical-Mode-Decomposition-EEMD"><a href="#Ensemble-Empirical-Mode-Decomposition-EEMD" class="headerlink" title="Ensemble Empirical Mode Decomposition (EEMD)"></a>Ensemble Empirical Mode Decomposition (EEMD)</h3><p>中文名称：集合经验模态分解方法</p>
+<p>提出者和提出时间：Wu Zhaohua and Norden E. Huang</p>
+<p>特点：EEMD 方法的主要思想是统计学中对某个分量多次测量求取平均值可以提高测量的准确性。EEMD 通过在原信号中多次加入足够多组不同的白噪声后再进行 EMD 分解，得到一组 IMF 分量，再利用白噪声均值为零的随机特性，对全部 EMD 分解得到的各组 IMF 分量求总体平均作为 EEMD 分解 IMF 分量，以消除白噪声的影响。白噪声的加入可以为 EMD 提供一个相对一致的参照尺度分布，保证每个模态函数的时域连续性来减少模态混叠。</p>
+<ul>
+<li>备注</li>
+<li>EMD 的模态混叠问题：模态混叠包含两种类型：一种是不同特征尺度出现在单个 IMF 分量中；另一种是相近的特征尺度存在于不同的 IMF 分量中。</li>
+<li>EEMD 分解具有不完备性：EEMD 分解方法是在原信号中多次加入不同的白噪声后再进行 EMD 分解，但是由于信号加入白噪声后分解的 IMF 的数量每次可能不一致，影响最终计算平均 IMF 分量。因此，实际 EEMD 算法并没有严格执行 IMF 的两个判据条件，而是在单次的 IMF 分解循环中只作了 M 次包络均值相减，便将结果作为 EEMD 的一个 IMF 分量。因此，EEMD 算法不一定满足 EMD 分解中的 IMF 条件，分解具有不完备性。</li>
+</ul>
+<h3 id="变分模态分解-Variational-Mode-Decomposition-VMD"><a href="#变分模态分解-Variational-Mode-Decomposition-VMD" class="headerlink" title="变分模态分解 Variational Mode Decomposition, VMD"></a>变分模态分解 Variational Mode Decomposition, VMD</h3><p>Variational mode decomposition is a completely non-recursive decomposition model, where all the modes are extracted concurrently. However, the model requires a preset mode number, which limits the adaptability of the method since a large deviation in the number of mode set will cause the discard or mixing of the mode.</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/66898788">Variational Mode Decomposition (变分模态分解) - 知乎 (zhihu.com)</a></p>
+<h3 id="同步压缩变换-Synchrosqueezing-Transform-SST"><a href="#同步压缩变换-Synchrosqueezing-Transform-SST" class="headerlink" title="同步压缩变换 Synchrosqueezing Transform, SST"></a>同步压缩变换 Synchrosqueezing Transform, SST</h3><h3 id="包络分析-Envelope-Analysis"><a href="#包络分析-Envelope-Analysis" class="headerlink" title="包络分析 Envelope Analysis"></a>包络分析 Envelope Analysis</h3><h3 id="阶次分析-Order-Analysis"><a href="#阶次分析-Order-Analysis" class="headerlink" title="阶次分析 Order Analysis"></a>阶次分析 Order Analysis</h3><ul>
+<li>阶次分析简介</li>
+</ul>
+<p>阶次分析方法的本质是将时域里的非稳态信号通过恒定的角增量重采样变为角域伪稳态信号，使其能更好地反映与转速相关的振动信息，再采用传统的信号分析方法对其进行处理。阶次分析方法是针对转频不稳定的机械的一种专门的振动测量技术，它可将机械变负载过程中产生的<strong>与转速有关</strong>的振动信号有效分离出来，同时对与转速无关的信息起到一定的抑制作用，对于转速变化的机械，该方法的优点是十分明显的。由于该方法是按照转角位置分配采样间隔的，所以剔除了转速变化对频谱图的影响。另外，其随转速升高而提高采样频率的特性也保证了对振动幅值测量的精确性。因为转速越高，振动波形的变化越剧烈，这时提高采样频率就加密了采样点，从而避免了振动过程中一些特征点的丢失。精确地阶次分析方法要求对振动信号进行同步采样，检测系统的精确度和可靠性取决于同步采样的质量。</p>
+<p>常用的阶次分析方法有以下几种： 硬件阶次分析法计算阶次分析法基于瞬时频率估计的阶次分析法。</p>
+<blockquote>
+<p>任国全等著. 旋转机械非平稳故障诊断[M]. 北京：科学出版社, 2018 第四章 P 76 经过角域重采样技术，可以将非平稳时域振动信号转化为“平稳”的角域振动信号，但是由于信号本身是非平稳的，转换后的角域信号被称为角域伪稳态振动信号。</p>
+</blockquote>
+<h3 id="谱峭度与快速谱峭度-Spectrum-Kurtosis"><a href="#谱峭度与快速谱峭度-Spectrum-Kurtosis" class="headerlink" title="谱峭度与快速谱峭度 Spectrum Kurtosis"></a>谱峭度与快速谱峭度 Spectrum Kurtosis</h3><p>谱峭度（Spectrum kurtosis, SK）的概念最先由 Dwyer 在 1983 年提出，其本质是计算每根谱线峭度值的高阶统计量。谱峭度对信号中的瞬态冲击成分十分敏感，能有效的从含有背景噪声信号中识别瞬态冲击及其在频带中的分布。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/266705380">知乎：轴承故障诊断之谱峭度法的一些总结</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>信号处理基本概念及经典方法</p><p><a href="https://latexalpha.github.io/0febfbc27c12/">https://latexalpha.github.io/0febfbc27c12/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-03-01</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/DSP/">DSP</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/b5d60d25b6af/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Zotero6 使用经验积累</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/92ed385f618e/"><span class="level-item">基于 GitHub 或 Gitee 创建图床</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#信号处理领域缩写词一览表"><span class="level-left"><span class="level-item">信号处理领域缩写词一览表</span></span></a></li><li><a class="level is-mobile" href="#信号处理领域一些常见概念"><span class="level-left"><span class="level-item">信号处理领域一些常见概念</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#信噪比（Signal-to-noise-ratio）"><span class="level-left"><span class="level-item">信噪比（Signal-to-noise ratio）</span></span></a></li><li><a class="level is-mobile" href="#Lamb-波"><span class="level-left"><span class="level-item">Lamb 波</span></span></a></li><li><a class="level is-mobile" href="#线性调频信号"><span class="level-left"><span class="level-item">线性调频信号</span></span></a></li><li><a class="level is-mobile" href="#平稳信号与非平稳信号"><span class="level-left"><span class="level-item">平稳信号与非平稳信号</span></span></a></li><li><a class="level is-mobile" href="#脊线"><span class="level-left"><span class="level-item">脊线</span></span></a></li><li><a class="level is-mobile" href="#功率谱"><span class="level-left"><span class="level-item">功率谱</span></span></a></li><li><a class="level is-mobile" href="#随机振动"><span class="level-left"><span class="level-item">随机振动</span></span></a></li><li><a class="level is-mobile" href="#线性系统与非线性系统"><span class="level-left"><span class="level-item">线性系统与非线性系统</span></span></a></li><li><a class="level is-mobile" href="#幅值调制、频率调制和相位调制"><span class="level-left"><span class="level-item">幅值调制、频率调制和相位调制</span></span></a></li><li><a class="level is-mobile" href="#边带"><span class="level-left"><span class="level-item">边带</span></span></a></li></ul></li><li><a class="level is-mobile" href="#经典信号处理方法"><span class="level-left"><span class="level-item">经典信号处理方法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#傅里叶变换-Fourier-Transform"><span class="level-left"><span class="level-item">傅里叶变换 Fourier Transform</span></span></a></li><li><a class="level is-mobile" href="#短时傅里叶变换-Short-Time-Fourier-Transform"><span class="level-left"><span class="level-item">短时傅里叶变换 Short Time Fourier Transform</span></span></a></li><li><a class="level is-mobile" href="#小波变换-Wavelet-Transform"><span class="level-left"><span class="level-item">小波变换 Wavelet Transform</span></span></a></li><li><a class="level is-mobile" href="#线性调频小波变换"><span class="level-left"><span class="level-item">线性调频小波变换</span></span></a></li><li><a class="level is-mobile" href="#Wigner-Ville-分布-Wigner-Ville-Distribution"><span class="level-left"><span class="level-item">Wigner-Ville 分布 Wigner-Ville Distribution</span></span></a></li><li><a class="level is-mobile" href="#经验模态分解-Empirical-Mode-Decomposition-EMD"><span class="level-left"><span class="level-item">经验模态分解 Empirical Mode Decomposition, EMD</span></span></a></li><li><a class="level is-mobile" href="#Ensemble-Empirical-Mode-Decomposition-EEMD"><span class="level-left"><span class="level-item">Ensemble Empirical Mode Decomposition (EEMD)</span></span></a></li><li><a class="level is-mobile" href="#变分模态分解-Variational-Mode-Decomposition-VMD"><span class="level-left"><span class="level-item">变分模态分解 Variational Mode Decomposition, VMD</span></span></a></li><li><a class="level is-mobile" href="#同步压缩变换-Synchrosqueezing-Transform-SST"><span class="level-left"><span class="level-item">同步压缩变换 Synchrosqueezing Transform, SST</span></span></a></li><li><a class="level is-mobile" href="#包络分析-Envelope-Analysis"><span class="level-left"><span class="level-item">包络分析 Envelope Analysis</span></span></a></li><li><a class="level is-mobile" href="#阶次分析-Order-Analysis"><span class="level-left"><span class="level-item">阶次分析 Order Analysis</span></span></a></li><li><a class="level is-mobile" href="#谱峭度与快速谱峭度-Spectrum-Kurtosis"><span class="level-left"><span class="level-item">谱峭度与快速谱峭度 Spectrum Kurtosis</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

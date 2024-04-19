@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>深度学习基础知识 - ZSY&#039;s Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="ZSY&#039;s Blogs"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ZSY&#039;s Blogs"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要介绍了深度学习的一些基础知识，包括深度学习的理论知识、深度学习框架、深度学习的基础知识、神经网络炼丹技巧等。"><meta property="og:type" content="blog"><meta property="og:title" content="深度学习基础知识"><meta property="og:url" content="https://latexalpha.github.io/7850b1fc6596/"><meta property="og:site_name" content="ZSY&#039;s Blog"><meta property="og:description" content="本文主要介绍了深度学习的一些基础知识，包括深度学习的理论知识、深度学习框架、深度学习的基础知识、神经网络炼丹技巧等。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://latexalpha.github.io/img/og_image.png"><meta property="article:published_time" content="2024-04-18T12:39:23.000Z"><meta property="article:modified_time" content="2024-04-19T03:57:49.765Z"><meta property="article:author" content="Shangyu ZHAO"><meta property="article:tag" content="Deep Learning"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://latexalpha.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://latexalpha.github.io/7850b1fc6596/"},"headline":"深度学习基础知识","image":["https://latexalpha.github.io/img/og_image.png"],"datePublished":"2024-04-18T12:39:23.000Z","dateModified":"2024-04-19T03:57:49.765Z","author":{"@type":"Person","name":"Shangyu ZHAO"},"publisher":{"@type":"Organization","name":"ZSY's Blog","logo":{"@type":"ImageObject","url":"https://latexalpha.github.io/img/logo.png"}},"description":"本文主要介绍了深度学习的一些基础知识，包括深度学习的理论知识、深度学习框架、深度学习的基础知识、神经网络炼丹技巧等。"}</script><link rel="canonical" href="https://latexalpha.github.io/7850b1fc6596/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/archives">博客归档</a><a class="navbar-item" href="/academic-index">学术索引</a><a class="navbar-item" href="/official-projects">项目文档</a><a class="navbar-item" href="/online-resources">在线资源</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Google" href="https://www.google.com/"><i class="fab fa-google"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-04-18T12:39:23.000Z" title="2024/4/18 20:39:23">2024-04-18</time>发表</span><span class="level-item"><time dateTime="2024-04-19T03:57:49.765Z" title="2024/4/19 11:57:49">2024-04-19</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">知识学习</a></span><span class="level-item">13 分钟读完 (大约1989个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">深度学习基础知识</h1><div class="content"><p>本文主要介绍了深度学习的一些基础知识，包括深度学习的理论知识、深度学习框架、深度学习的基础知识、神经网络炼丹技巧等。</p>
+<span id="more"></span>
+
+<h2 id="深度学习框架"><a href="#深度学习框架" class="headerlink" title="深度学习框架"></a>深度学习框架</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://developer.ibm.com/technologies/deep-learning/">IBM Developer | Deep learning</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/deep-learning">NVIDIA Developer | Deep learning</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://techdevguide.withgoogle.com/resources/topics/deep-learning/?no-filter=true">Google Tech Dev Guide | Deep Learning</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/deep-learning-frameworks">Deep Learning Frameworks | NVIDIA Developer</a></p>
+</li>
+</ul>
+<h3 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a></li>
+<li><a target="_blank" rel="noopener" href="https://discuss.tensorflow.org/">TensorFlow Forum</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/tutorials">TensorFlow Core Tutorials</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/guide/">TensorFlow Core Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf">TensorFlow API for Python</a></li>
+</ul>
+<h3 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org/">PyTorch</a></li>
+<li><a target="_blank" rel="noopener" href="https://discuss.pytorch.org/">PyTorch Forums</a></li>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/">PyTorch Tutorials</a></li>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/">PyTorch documentation</a></li>
+</ul>
+<h3 id="JAX"><a href="#JAX" class="headerlink" title="JAX"></a>JAX</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://jax.readthedocs.io/en/latest/">JAX: High-Performance Array Computing — JAX documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/google/jax">GitHub - google&#x2F;jax: Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU&#x2F;TPU, and more</a></li>
+</ul>
+<h3 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://keras.io/">Keras: Deep Learning for humans</a></li>
+<li><a target="_blank" rel="noopener" href="https://keras.io/guides/">Developer guides (keras.io)</a></li>
+<li><a target="_blank" rel="noopener" href="https://keras.io/api/">Keras API reference</a></li>
+<li><a target="_blank" rel="noopener" href="https://keras.io/examples/">Code examples (keras.io)</a></li>
+</ul>
+<h3 id="不同框架的比较"><a href="#不同框架的比较" class="headerlink" title="不同框架的比较"></a>不同框架的比较</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning">Tensorflow vs. PyTorch vs. Keras for Deep Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.simplilearn.com/keras-vs-tensorflow-vs-pytorch-article">Pytorch Vs Tensorflow Vs Keras: Here are the Difference You Should Know</a></li>
+</ul>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="结构化神经网络模型代码"><a href="#结构化神经网络模型代码" class="headerlink" title="结构化神经网络模型代码"></a>结构化神经网络模型代码</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://danijar.com/structuring-your-tensorflow-models/">Structuring Your TensorFlow Models</a></li>
+<li><a target="_blank" rel="noopener" href="https://danijar.com/structuring-models/">Structuring Deep Learning Models</a></li>
+</ul>
+<h3 id="端到端的含义"><a href="#端到端的含义" class="headerlink" title="端到端的含义"></a>端到端的含义</h3><p><strong>End to End learning</strong> in the context of AI and ML is a technique where the model learns all the steps between the initial input phase and the final output result. This is a deep learning process where all of the different parts are simultaneously trained instead of sequentially.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.clickworker.com/ai-glossary/end-to-end-learning/#:~:text=End%20to%20End%20learning%20in,simultaneously%20trained%20instead%20of%20sequentially">End to End learning in AI</a></li>
+<li>[End-to-end learning, the (almost) every purpose ML method](<a target="_blank" rel="noopener" href="https://towardsdatascience.com/e2e-the-every-purpose-ml-method-5d4f20">https://towardsdatascience.com/e2e-the-every-purpose-ml-method-5d4f20</a></li>
+</ul>
+<h3 id="计算神经网络模型中的参数"><a href="#计算神经网络模型中的参数" class="headerlink" title="计算神经网络模型中的参数"></a>计算神经网络模型中的参数</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/parameter-counts-in-machine-learning-a312dc4753d0">Parameter counts in Machine Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">Counting No. of Parameters in Deep Learning Models by Hand</a></li>
+</ul>
+<h3 id="Batch-and-Epoch"><a href="#Batch-and-Epoch" class="headerlink" title="Batch and Epoch"></a>Batch and Epoch</h3><ul>
+<li><p>The batch size is a hyperparameter of gradient descent that controls the number of training samples to work through before the model’s internal parameters are updated.</p>
+</li>
+<li><p>The number of epochs is a hyperparameter of gradient descent that controls the number of complete passes through the training dataset.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/">Difference Between a Batch and an Epoch in a Neural Network - Machine Learning Mastery</a></p>
+</li>
+</ul>
+<h3 id="Softmax"><a href="#Softmax" class="headerlink" title="Softmax"></a>Softmax</h3><p>在数学，尤其是概率论和相关领域中，<strong>Softmax 函数</strong>，或称<strong>归一化指数函数</strong>，是逻辑函数的一种推广。它能将一个含任意实数的 K 维向量 <em>z</em> “压缩”到另一个 K 维实向量*σ(<em>z</em>)*中，使得每一个元素的范围都在(0, 1)之间，并且所有元素的和为 1（也可视为一个(<em>k</em> − 1)维的 hyperplane 或 subspace）。该函数的形式通常由下面的形式给出:</p>
+<p>$$<br>\sigma(z)<em>{j} &#x3D; \frac {e^{z_j}} {\sum</em>{k&#x3D;1}^{K}e^{z_k}} for j &#x3D; 1, \cdots, K.<br>$$</p>
+<p>输入向量[1, 2, 3, 4, 1, 2, 3]对应的 Softmax 函数的值为[0.024, 0.064, 0.175, 0.475, 0.024, 0.064, 0.175]。输出向量中拥有最大权重的项对应着输入向量中的最大值“4”。这也显示了这个函数通常的意义：对向量进行归一化，凸显其中最大的值并抑制远低于最大值的其他分量。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Softmax%E5%87%BD%E6%95%B0">Softmax 函数 - 维基百科，自由的百科全书</a></li>
+<li><a target="_blank" rel="noopener" href="https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/">The Softmax function and its derivative</a></li>
+</ul>
+<h3 id="Backpropagation"><a href="#Backpropagation" class="headerlink" title="Backpropagation"></a>Backpropagation</h3><p>In machine learning, backpropagation (backprop, BP) is a widely used algorithm for training <strong>feedforward neural networks</strong>. Generalizations of backpropagation exist for other artificial neural networks (ANNs), and for functions generally. These classes of algorithms are all referred to generically as “backpropagation”. In fitting a neural network, backpropagation computes the gradient of the loss function with respect to the weights of the network for a single input–output example, and does so efficiently, unlike a naive direct computation of the gradient with respect to each weight individually. This efficiency makes it feasible to use gradient methods for training multilayer networks, updating weights to minimize loss; gradient descent, or variants such as stochastic gradient descent, are commonly used. The backpropagation algorithm works by computing the gradient of the loss function with respect to each weight by the chain rule, computing the gradient one layer at a time, iterating backward from the last layer to avoid redundant calculations of intermediate terms in the chain rule; this is an example of dynamic programming.</p>
+<p><strong>The term backpropagation strictly refers only to the algorithm for computing the gradient, not how the gradient is used; however, the term is often used loosely to refer to the entire learning algorithm, including how the gradient is used, such as by stochastic gradient descent.</strong> Backpropagation generalizes the gradient computation in the delta rule, which is the single-layer version of backpropagation, and is in turn generalized by automatic differentiation, where backpropagation is a special case of reverse accumulation (or “reverse mode”). The term backpropagation and its general use in neural networks was announced in Rumelhart, Hinton &amp; Williams (1986a), then elaborated and popularized in Rumelhart, Hinton &amp; Williams (1986b), but the technique was independently rediscovered many times, and had many predecessors dating to the 1960s.</p>
+<h3 id="Latent-Space"><a href="#Latent-Space" class="headerlink" title="Latent Space"></a>Latent Space</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/understanding-latent-space-in-machine-learning-de5a7c687d8d">Understanding latent space in machine learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/cs/dl-latent-space">Latent Space in Deep Learning</a></li>
+</ul>
+<h3 id="Embedding"><a href="#Embedding" class="headerlink" title="Embedding"></a>Embedding</h3><p>什么是 Embedding？</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://towardsdatascience.com/neural-network-embeddings-explained-4d028e6f0526">Neural Network Embeddings Explained</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://machinelearningmastery.com/use-word-embedding-layers-deep-learning-keras/">How to Use Word Embedding Layers for Deep Learning with Keras - Machine Learning Mastery</a></p>
+</li>
+</ul>
+<h3 id="过拟合-Overfitting"><a href="#过拟合-Overfitting" class="headerlink" title="过拟合 (Overfitting)"></a>过拟合 (Overfitting)</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/what-is/overfitting/">What is Overfitting?</a></li>
+<li><a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/discovery/overfitting.html">什么是过拟合？</a></li>
+</ul>
+<h2 id="神经网络炼丹技巧"><a href="#神经网络炼丹技巧" class="headerlink" title="神经网络炼丹技巧"></a>神经网络炼丹技巧</h2><h3 id="超参数调节"><a href="#超参数调节" class="headerlink" title="超参数调节"></a>超参数调节</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.yourdatateacher.com/2021/05/19/hyperparameter-tuning-grid-search-and-random-search/">Hyperparameter tuning. Grid search and random search | Your Data Teacher</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shona/p/12667950.html">炼丹宝典 | 整理 Deep Learning 调参 tricks - 山竹小果 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25097993">深度学习调参有哪些技巧？</a></li>
+</ul>
+<h3 id="学习率调整"><a href="#学习率调整" class="headerlink" title="学习率调整"></a>学习率调整</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/69411064">PyTorch 学习笔记（八）：PyTorch 的六个学习率调整方法 - 知乎 (zhihu.com)</a></li>
+</ul>
+<h3 id="梯度裁剪（Gradient-Clipping）"><a href="#梯度裁剪（Gradient-Clipping）" class="headerlink" title="梯度裁剪（Gradient Clipping）"></a>梯度裁剪（Gradient Clipping）</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/99953668">深度炼丹之梯度裁剪</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39653948/article/details/105962326">【调参 19】如何使用梯度裁剪（Gradient Clipping）避免梯度爆炸_Constant dripping wears the stone-CSDN 博客_keras 梯度裁剪</a></li>
+</ul>
+<h3 id="损失函数正则化"><a href="#损失函数正则化" class="headerlink" title="损失函数正则化"></a>损失函数正则化</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://discoverml.github.io/simplified-deeplearning/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%BC%98%E5%8C%96/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E4%BC%98%E5%8C%96.html">深度学习中的优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/how-to-improve-a-neural-network-with-regularization-8a18ecda9fe3">How to Improve a Neural Network With Regularization</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/regularization-in-deep-learning-l1-l2-and-dropout-377e75acc036">Regularization in Deep Learning - L1, L2, and Dropout</a></li>
+</ul>
+<h3 id="神经网络参数共享"><a href="#神经网络参数共享" class="headerlink" title="神经网络参数共享"></a>神经网络参数共享</h3><p>只需要将神经网络的参数保存起来然后重新加载就可以了。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://avivnavon.github.io/blog/parameter-sharing-in-deep-learning/">Parameter Sharing in Deep Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/understanding-parameter-sharing-or-weights-replication-within-convolutional-neural-networks-cc26db7b645a">Understanding Parameter Sharing (or weights replication) Within Convolutional Neural Networks</a></li>
+</ul>
+<h3 id="提升神经网络的鲁棒性和稳定性"><a href="#提升神经网络的鲁棒性和稳定性" class="headerlink" title="提升神经网络的鲁棒性和稳定性"></a>提升神经网络的鲁棒性和稳定性</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://machinelearningmastery.com/how-to-improve-neural-network-stability-and-modeling-performance-with-data-scaling/">How to use Data Scaling Improve Deep Learning Model Stability and Performance - Machine Learning Mastery</a></li>
+</ul>
+<h3 id="提高模型的泛化能力"><a href="#提高模型的泛化能力" class="headerlink" title="提高模型的泛化能力"></a>提高模型的泛化能力</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/how-to-make-deep-learning-models-to-generalize-better-3341a2c5400c">How to make Deep Learning Models Generalize Better</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/540433389">深度学习刷 SOTA 有哪些 trick？ - 知乎 (zhihu.com)</a></li>
+</ul>
+<h3 id="保存神经网络模型与权重"><a href="#保存神经网络模型与权重" class="headerlink" title="保存神经网络模型与权重"></a>保存神经网络模型与权重</h3><p>Saving the model to HDF5 format requires the model to be a Functional model or a Sequential model. It does not work for subclassed models, because such models are defined via the body of a Python method, which isn’t safely serializable. Consider saving to the Tensorflow SavedModel format (by setting save_format&#x3D;”tf”) or using <code>save_weights</code>.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.gcptutorials.com/post/how-to-get-weights-of-layers-in-tensorflow">How to get weights of layers in TensorFlow</a></li>
+</ul>
+<h3 id="神经网络中的求导"><a href="#神经网络中的求导" class="headerlink" title="神经网络中的求导"></a>神经网络中的求导</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014046022/article/details/78848314">常用的求导公式</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://quantdare.com/have-you-tried-to-calculate-derivatives-using-tensorflow-2/">Have you tried to calculate derivatives using TensorFlow 2?</a></p>
+</li>
+</ul>
+<h2 id="链接收藏"><a href="#链接收藏" class="headerlink" title="链接收藏"></a>链接收藏</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/86580">【深度学习之美】一入侯门“深”似海，深度学习深几许（入门系列之一）-阿里云开发者社区 (aliyun.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://discoverml.github.io/simplified-deeplearning/">DeepLearningBook 读书笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://victorzhou.com/blog/intro-to-neural-networks/">Machine Learning for Beginners: An Introduction to Neural Networks - victorzhou.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/10-best-free-websites-to-learn-more-about-data-science-and-machine-learning-f2c6d7387b8d">10 Best Free Websites To Learn More About Data Science And Machine Learning!</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/252343352">长文总结半监督学习（Semi-Supervised Learning） - 知乎 (zhihu.com)</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>深度学习基础知识</p><p><a href="https://latexalpha.github.io/7850b1fc6596/">https://latexalpha.github.io/7850b1fc6596/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shangyu ZHAO</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-04-18</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-19</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Deep-Learning/">Deep Learning</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822005.jpg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="https://raw.githubusercontent.com/latexalpha/image_bed/main/images24/202401181822198.jpg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/004695bf6985/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">神经网络结构</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/596d5cd487fa/"><span class="level-item">深度学习概念梳理</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/"><span class="level-start"><span class="level-item">知识学习</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li><li><a class="level is-mobile" href="/categories/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"><span class="level-start"><span class="level-item">经验积累</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li></ul></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#深度学习框架"><span class="level-left"><span class="level-item">深度学习框架</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#TensorFlow"><span class="level-left"><span class="level-item">TensorFlow</span></span></a></li><li><a class="level is-mobile" href="#PyTorch"><span class="level-left"><span class="level-item">PyTorch</span></span></a></li><li><a class="level is-mobile" href="#JAX"><span class="level-left"><span class="level-item">JAX</span></span></a></li><li><a class="level is-mobile" href="#Keras"><span class="level-left"><span class="level-item">Keras</span></span></a></li><li><a class="level is-mobile" href="#不同框架的比较"><span class="level-left"><span class="level-item">不同框架的比较</span></span></a></li></ul></li><li><a class="level is-mobile" href="#基础知识"><span class="level-left"><span class="level-item">基础知识</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#结构化神经网络模型代码"><span class="level-left"><span class="level-item">结构化神经网络模型代码</span></span></a></li><li><a class="level is-mobile" href="#端到端的含义"><span class="level-left"><span class="level-item">端到端的含义</span></span></a></li><li><a class="level is-mobile" href="#计算神经网络模型中的参数"><span class="level-left"><span class="level-item">计算神经网络模型中的参数</span></span></a></li><li><a class="level is-mobile" href="#Batch-and-Epoch"><span class="level-left"><span class="level-item">Batch and Epoch</span></span></a></li><li><a class="level is-mobile" href="#Softmax"><span class="level-left"><span class="level-item">Softmax</span></span></a></li><li><a class="level is-mobile" href="#Backpropagation"><span class="level-left"><span class="level-item">Backpropagation</span></span></a></li><li><a class="level is-mobile" href="#Latent-Space"><span class="level-left"><span class="level-item">Latent Space</span></span></a></li><li><a class="level is-mobile" href="#Embedding"><span class="level-left"><span class="level-item">Embedding</span></span></a></li><li><a class="level is-mobile" href="#过拟合-Overfitting"><span class="level-left"><span class="level-item">过拟合 (Overfitting)</span></span></a></li></ul></li><li><a class="level is-mobile" href="#神经网络炼丹技巧"><span class="level-left"><span class="level-item">神经网络炼丹技巧</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#超参数调节"><span class="level-left"><span class="level-item">超参数调节</span></span></a></li><li><a class="level is-mobile" href="#学习率调整"><span class="level-left"><span class="level-item">学习率调整</span></span></a></li><li><a class="level is-mobile" href="#梯度裁剪（Gradient-Clipping）"><span class="level-left"><span class="level-item">梯度裁剪（Gradient Clipping）</span></span></a></li><li><a class="level is-mobile" href="#损失函数正则化"><span class="level-left"><span class="level-item">损失函数正则化</span></span></a></li><li><a class="level is-mobile" href="#神经网络参数共享"><span class="level-left"><span class="level-item">神经网络参数共享</span></span></a></li><li><a class="level is-mobile" href="#提升神经网络的鲁棒性和稳定性"><span class="level-left"><span class="level-item">提升神经网络的鲁棒性和稳定性</span></span></a></li><li><a class="level is-mobile" href="#提高模型的泛化能力"><span class="level-left"><span class="level-item">提高模型的泛化能力</span></span></a></li><li><a class="level is-mobile" href="#保存神经网络模型与权重"><span class="level-left"><span class="level-item">保存神经网络模型与权重</span></span></a></li><li><a class="level is-mobile" href="#神经网络中的求导"><span class="level-left"><span class="level-item">神经网络中的求导</span></span></a></li></ul></li><li><a class="level is-mobile" href="#链接收藏"><span class="level-left"><span class="level-item">链接收藏</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="ZSY&#039;s Blog" height="28"><p class="is-size-7"><span>&copy; 2024 Shangyu ZHAO</span></p></a><p class="is-size-7"></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo documentation" href="https://hexo.io/docs/"><i class="fas fa-book"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Hexo theme icarus" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-right",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
